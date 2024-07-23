@@ -12,10 +12,6 @@ use PowerCaptcha\OxidEshop\Module;
  */
 class ModuleSettings implements ModuleSettingsInterface
 {
-    private const API_VERSION = 'v1';
-    private const JS_VERSION = '1.2.5'; // TODO release frontend version 1.2.5
-    private const DEFAULT_ENDPOINT_BASE_URL = 'https://api.power-captcha.com';
-    private const DEFAULT_JAVASCRIPT_BASE_URL = 'https://cdn.power-captcha.com';
     
     public function __construct(
         private ModuleSettingServiceInterface $moduleSettingService
@@ -29,12 +25,12 @@ class ModuleSettings implements ModuleSettingsInterface
 
     public function getApiKey(): string
     {
-        return $this->getSettingString(self::SETTING_NAME_API_KEY);
+        return $this->getSettingString(Module::SETTING_NAME_API_KEY);
     }
 
     public function getSecretKey(): string
     {
-        return $this->getSettingString(self::SETTING_NAME_SECRET_KEY);        
+        return $this->getSettingString(Module::SETTING_NAME_SECRET_KEY);        
     }
 
     public function getClientUid(): string
@@ -45,28 +41,28 @@ class ModuleSettings implements ModuleSettingsInterface
 
     public function getJavaScriptUrl(): string
     {
-        return $this->getJavaScriptBaseUrl() . '/' . self::API_VERSION . '/power-captcha-' . self::JS_VERSION . '.min.js';
+        return $this->getJavaScriptBaseUrl() . '/' . Module::API_VERSION . '/power-captcha-' . Module::JS_VERSION . '.min.js';
     }
 
     public function getTokenRequestUrl(): string
     {
-        return $this->getEndpointBaseUrl() . '/pc/' . self::API_VERSION ;
+        return $this->getEndpointBaseUrl() . '/pc/' . Module::API_VERSION ;
     }
 
     public function getTokenVerificationUrl(): string
     {
-        return $this->getEndpointBaseUrl() . '/pcu/' . self::API_VERSION . '/verify';
+        return $this->getEndpointBaseUrl() . '/pcu/' . Module::API_VERSION . '/verify';
     }
 
     public function getJavaScriptBaseUrl(): string
     {
-        $url = $this->getSettingString(self::SETTING_NAME_JAVASCRIPT_BASE_URL, self::DEFAULT_JAVASCRIPT_BASE_URL);
+        $url = $this->getSettingString(Module::SETTING_NAME_JAVASCRIPT_BASE_URL, Module::DEFAULT_JAVASCRIPT_BASE_URL);
         return $this->cleanTrailingSlash($url);
     }
 
     private function getEndpointBaseUrl(): string
     {
-        $url = $this->getSettingString(self::SETTING_NAME_ENDPOINT_BASE_URL, self::DEFAULT_ENDPOINT_BASE_URL);
+        $url = $this->getSettingString(Module::SETTING_NAME_ENDPOINT_BASE_URL, Module::DEFAULT_ENDPOINT_BASE_URL);
         return $this->cleanTrailingSlash($url);
     }
 

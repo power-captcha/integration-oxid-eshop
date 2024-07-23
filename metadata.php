@@ -4,7 +4,7 @@
  * Copyright © POWER CAPTCHA. All rights reserved.
  * See LICENSE file for license details.
  */
-use PowerCaptcha\OxidEshop\Service\ModuleSettingsInterface as Settings;
+use PowerCaptcha\OxidEshop\Module;
 /**
  * Metadata version
  */
@@ -38,28 +38,28 @@ $aModule = [
     'settings' => [
         /** General settings */
         [
-            'group'       => Settings::SETTING_GROUP_GENERAL,
-            'name'        => Settings::SETTING_NAME_API_KEY,
+            'group'       => Module::SETTING_GROUP_GENERAL,
+            'name'        => Module::SETTING_NAME_API_KEY,
             'type'        => 'str',
             'value'       => ''
         ],
         [
-            'group'       => Settings::SETTING_GROUP_GENERAL,
-            'name'        => Settings::SETTING_NAME_SECRET_KEY,
+            'group'       => Module::SETTING_GROUP_GENERAL,
+            'name'        => Module::SETTING_NAME_SECRET_KEY,
             'type'        => 'str', 
             'value'       => ''
         ],
 
         /** On-premises settings */
         [
-            'group'       => Settings::SETTING_GROUP_ONPREMISES,
-            'name'        => Settings::SETTING_NAME_ENDPOINT_BASE_URL,
+            'group'       => Module::SETTING_GROUP_ONPREMISES,
+            'name'        => Module::SETTING_NAME_ENDPOINT_BASE_URL,
             'type'        => 'str', 
             'value'       => ''
         ],
         [
-            'group'       => Settings::SETTING_GROUP_ONPREMISES,
-            'name'        => Settings::SETTING_NAME_JAVASCRIPT_BASE_URL,
+            'group'       => Module::SETTING_GROUP_ONPREMISES,
+            'name'        => Module::SETTING_NAME_JAVASCRIPT_BASE_URL,
             'type'        => 'str', 
             'value'       => ''
         ],
