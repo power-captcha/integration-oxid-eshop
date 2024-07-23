@@ -1,0 +1,37 @@
+{
+    "name": "power-captcha/integration-oxid-eshop",
+    "description": "POWER CAPTCHA protects your OXID eShop against bots and unauthorized persons. GDPR compliant!",
+    "type": "oxideshop-module",
+    "homepage": "https://power-captcha.com/en",
+    "keywords": [
+        "oxid",
+        "eShop",
+        "module",
+        "captcha",
+        "bots",
+        "spam",
+        "security",
+        "protection",
+        "bot-protection",
+        "spam-protection",
+        "GDRP-compliant"
+    ],
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "prefer-stable": true,
+    "prefer-dist": true,
+    "require": {
+        "php": "^8.1"
+    },
+    "minimum-stability": "dev",
+    "conflict": {
+        "oxid-esales/oxideshop-ce": "<7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "PowerCaptcha\\OxidEshop\\": "src/",
+            "PowerCaptcha\\OxidEshop\\Tests\\": "tests/"
+        }
+    }
+}

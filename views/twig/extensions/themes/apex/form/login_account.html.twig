@@ -1,0 +1,14 @@
+{% extends "form/login_account.html.twig" %}
+{% block checkout_options_loginaccount_submitbutton %}
+    <div class="mb-3">
+        {% include '@power_captcha/templates/widget.html.twig' with {pcUserInputField: '#loginUser'} %}
+
+        {% if Errors.powerCaptchaErrors %}
+        <div class="mt-1 text-danger">
+            <p>{{ translate({ ident: "POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT" }) }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    {{ parent() }}
+{% endblock %}
