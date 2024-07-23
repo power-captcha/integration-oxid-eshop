@@ -41,16 +41,29 @@ $aModule = [
             'group'       => Settings::SETTING_GROUP_GENERAL,
             'name'        => Settings::SETTING_NAME_API_KEY,
             'type'        => 'str',
-            // 'constraints' => 'generic|personal', //TODO mandatory constraint?
             'value'       => ''
         ],
         [
             'group'       => Settings::SETTING_GROUP_GENERAL,
             'name'        => Settings::SETTING_NAME_SECRET_KEY,
             'type'        => 'str', 
-            // 'constraints' => 'generic|personal',
             'value'       => ''
         ],
+
+        /** On-premises settings */
+        [
+            'group'       => Settings::SETTING_GROUP_ONPREMISES,
+            'name'        => Settings::SETTING_NAME_ENDPOINT_BASE_URL,
+            'type'        => 'str', 
+            'value'       => ''
+        ],
+        [
+            'group'       => Settings::SETTING_GROUP_ONPREMISES,
+            'name'        => Settings::SETTING_NAME_JAVASCRIPT_BASE_URL,
+            'type'        => 'str', 
+            'value'       => ''
+        ],
+
         //TODO: add help texts for settings to explain possibilities and point out which ones only serve as example
         // /** Main */
         // [

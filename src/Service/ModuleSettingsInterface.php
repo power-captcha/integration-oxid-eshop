@@ -7,11 +7,19 @@ namespace PowerCaptcha\OxidEshop\Service;
 interface ModuleSettingsInterface
 {
 
+    // General settings
     public const SETTING_GROUP_GENERAL = 'power_captcha_general';
 
     public const SETTING_NAME_API_KEY = 'power_captcha_ApiKey';
 
     public const SETTING_NAME_SECRET_KEY = 'power_captcha_SecretKey';
+
+    // On-premises settings
+    public const SETTING_GROUP_ONPREMISES = 'power_captcha_onpremises';
+
+    public const SETTING_NAME_ENDPOINT_BASE_URL = 'power_captcha_EndpointBaseUrl';
+
+    public const SETTING_NAME_JAVASCRIPT_BASE_URL = 'power_captcha_JavaScriptBaseUrl';
 
 
     // public const GREETING_MODE_GENERIC = 'generic';
