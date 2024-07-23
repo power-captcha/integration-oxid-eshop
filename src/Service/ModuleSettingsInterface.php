@@ -12,6 +12,8 @@ interface ModuleSettingsInterface
 
     public function getSecretKey(): string;
 
+    public function getCheckMode(): string;
+
     public function getClientUid(): string;
 
     public function getTokenRequestUrl(): string;

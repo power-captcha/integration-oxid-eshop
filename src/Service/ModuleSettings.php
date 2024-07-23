@@ -12,7 +12,6 @@ use PowerCaptcha\OxidEshop\Module;
  */
 class ModuleSettings implements ModuleSettingsInterface
 {
-    
     public function __construct(
         private ModuleSettingServiceInterface $moduleSettingService
     ) {
@@ -31,6 +30,16 @@ class ModuleSettings implements ModuleSettingsInterface
     public function getSecretKey(): string
     {
         return $this->getSettingString(Module::SETTING_NAME_SECRET_KEY);        
+    }
+
+    public function getCheckMode(): string
+    {
+        $checkMode = $this->getSettingString(Module::SETTING_NAME_CHECK_MODE, Module::DEFAULT_CHECK_MODE);
+        if(in_array($checkMode, [Module::CHECK_MODE_OPTION_AUTO, Module::CHECK_MODE_OPTION_HIDDEN, Module::CHECK_MODE_OPTION_MANU])) {
+            return $checkMode;
+        }
+
+        return Module::DEFAULT_CHECK_MODE;
     }
 
     public function getClientUid(): string

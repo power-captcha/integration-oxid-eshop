@@ -49,6 +49,16 @@ $aModule = [
             'type'        => 'str', 
             'value'       => ''
         ],
+        [
+            'group'       => Module::SETTING_GROUP_GENERAL,
+            'name'        => Module::SETTING_NAME_CHECK_MODE,
+            'type'        => 'select', 
+            'value'       => Module::CHECK_MODE_OPTION_AUTO,
+            'constraints' => 
+                Module::CHECK_MODE_OPTION_AUTO . '|' .
+                Module::CHECK_MODE_OPTION_HIDDEN . '|' .
+                Module::CHECK_MODE_OPTION_MANU
+        ],
 
         /** On-premises settings */
         [
