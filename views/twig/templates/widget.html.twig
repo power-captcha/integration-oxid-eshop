@@ -12,7 +12,7 @@
     {% if pcFormElement %}
     data-pc-form-element="{{ pcFormElement }}"
     {% endif %}
-    data-pc-debug="true"
+    data-pc-debug="{{ powerCaptcha.isDebugMode() ? 'true' : 'false' }}"
     class="{% if Errors.powerCaptchaErrors %}pc-show-invalid{% endif %}">
 </div>
 

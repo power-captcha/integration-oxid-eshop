@@ -42,6 +42,11 @@ class ModuleSettings implements ModuleSettingsInterface
         return Module::DEFAULT_CHECK_MODE;
     }
 
+    public function isDebugMode(): bool
+    {
+        return $this->moduleSettingService->getBoolean(Module::SETTING_NAME_DEBUG_MODE, Module::MODULE_ID);
+    }
+
     public function getClientUid(): string
     {
         $ip = \OxidEsales\Eshop\Core\Registry::getUtilsServer()->getRemoteAddress();

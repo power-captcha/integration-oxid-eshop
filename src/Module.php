@@ -32,6 +32,8 @@ final class Module
 
     public const SETTING_NAME_CHECK_MODE = 'power_captcha_CheckMode';
 
+    public const SETTING_NAME_DEBUG_MODE = 'power_captcha_DebugMode';
+
     // On-premises settings
     public const SETTING_GROUP_ONPREMISES = 'power_captcha_onpremises';
 

@@ -59,6 +59,12 @@ $aModule = [
                 Module::CHECK_MODE_OPTION_HIDDEN . '|' .
                 Module::CHECK_MODE_OPTION_MANU
         ],
+        [
+            'group'       => Module::SETTING_GROUP_GENERAL,
+            'name'        => Module::SETTING_NAME_DEBUG_MODE,
+            'type'        => 'bool', 
+            'value'       => false
+        ],
 
         /** On-premises settings */
         [

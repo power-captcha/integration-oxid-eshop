@@ -35,6 +35,8 @@ $aLang = [
     'SHOP_MODULE_power_captcha_CheckMode_auto'   => 'Automatisch',
     'SHOP_MODULE_power_captcha_CheckMode_hidden' => 'Versteckt',
     'SHOP_MODULE_power_captcha_CheckMode_manu'   => 'Manuell',
+    'SHOP_MODULE_power_captcha_DebugMode'        => 'Debug-Modus (optional)',
+    'HELP_SHOP_MODULE_power_captcha_DebugMode'   => 'Der Debug-Modus aktiviert die Log-Ausgabe in der Browser-Konsole.',
     
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-Premises Einstellungen',

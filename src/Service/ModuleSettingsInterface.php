@@ -14,6 +14,8 @@ interface ModuleSettingsInterface
 
     public function getCheckMode(): string;
 
+    public function isDebugMode(): bool;
+
     public function getClientUid(): string;
 
     public function getTokenRequestUrl(): string;
