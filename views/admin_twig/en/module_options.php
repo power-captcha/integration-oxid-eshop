@@ -7,10 +7,13 @@ $aLang = [
 
     // General settings
     'SHOP_MODULE_GROUP_power_captcha_general'   => 'General settings',
+    
     'SHOP_MODULE_power_captcha_api_key'         => 'API Key <strong>(required)</strong>',
     'HELP_SHOP_MODULE_power_captcha_api_key'    => 'Enter your POWER CAPTCHA API Key. Find your API Key in the <a href="https://power-captcha.com/en/my-account/api-keys/" target="_blank">API Key Management</a>.',
+    
     'SHOP_MODULE_power_captcha_secret_key'      => 'Secret Key <strong>(required)</strong>',
     'HELP_SHOP_MODULE_power_captcha_secret_key' => 'Enter your POWER CAPTCHA Secret Key. Find your Secret Key in the <a href="https://power-captcha.com/en/my-account/api-keys/" target="_blank">API Key Management</a>.',
+    
     'SHOP_MODULE_power_captcha_CheckMode'       => 'Check mode (optional)',
     'HELP_SHOP_MODULE_power_captcha_CheckMode'  =>
         '<p>Configure the display of the widget and the behaviour of the security check.</p>
@@ -35,13 +38,35 @@ $aLang = [
     'SHOP_MODULE_power_captcha_CheckMode_auto'   => 'Automatic',
     'SHOP_MODULE_power_captcha_CheckMode_hidden' => 'Hidden',
     'SHOP_MODULE_power_captcha_CheckMode_manu'   => 'Manual',
+    
+    'SHOP_MODULE_power_captcha_ApiErrorPolicy'   => 'API Error Policy (optional)',
+    'HELP_SHOP_MODULE_power_captcha_ApiErrorPolicy'   => '
+        <p>Configure the behaviour in the case of errors during token verification via the POWER CAPTCHA API (e.g. connection problems to the API or incorrect configuration).</p>
+        <ul>
+            <li>
+                <strong>Grant access</strong> (default):
+                Access is granted if an API error occurs.
+            </li>
+            <li>
+                <strong>Block access</strong>:
+                Access is blocked if an API error occurs. An error message is displayed requesting the user to try again later.
+            </li>
+        </ul>
+        <p>Note: Error messages are always logged regardless of this setting.</p>
+        ',
+    'SHOP_MODULE_power_captcha_ApiErrorPolicy_grantAccess'   => 'Grant access',
+    'SHOP_MODULE_power_captcha_ApiErrorPolicy_blockAccess'   => 'Block access',
+
+
     'SHOP_MODULE_power_captcha_DebugMode'        => 'Debug mode (optional)',
     'HELP_SHOP_MODULE_power_captcha_DebugMode'   => 'Debug mode enables the log output in the browser console.',
 
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-premise settings',
+    
     'SHOP_MODULE_power_captcha_EndpointBaseUrl'           => 'Endpoint base URL (optional)',
     'HELP_SHOP_MODULE_power_captcha_EndpointBaseUrl'      => 'Only needed if you have an on-premises version with self-hosted POWER CAPTCHA endpoint.',
+    
     'SHOP_MODULE_power_captcha_JavascriptBaseUrl'         => 'JavaScript base URL (optional)',
     'HELP_SHOP_MODULE_power_captcha_JavascriptBaseUrl'    => 'Only needed if you have an on-premises version with self-hosted POWER CAPTCHA JavaScript.',
     

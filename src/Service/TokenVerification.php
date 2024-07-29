@@ -6,6 +6,10 @@ namespace PowerCaptcha\OxidEshop\Service;
 
 use OxidEsales\EshopCommunity\Core\Registry;
 use Psr\Log\LoggerInterface;
+use CurlHandle;
+use PowerCaptcha\OxidEshop\Module;
+use PowerCaptcha\OxidEshop\Exception\ApiError;
+use PowerCaptcha\OxidEshop\Exception\UserError;
 
 /**
  * @extendable-class
@@ -18,66 +22,114 @@ class TokenVerification implements TokenVerificationInterface
     ) {
     }
 
-    public function verifyToken($userFieldName = null): bool
+    public function verifyToken(string $userFieldName = null, string $token = null): bool
     {
-        if(false == $this->moduleSettings->isConfigured()) {
-            $this->logger->warning('POWER CAPTCHA is not configured! Please provide API Key and Secret Key.');
+        if(false ===$this->moduleSettings->isConfigured()) {
+            $this->logger->error(
+                'POWER CAPTCHA Token verification is skipped due to missing configuration! Please provide API Key and Secret Key.'
+            );
             return true;
         }
 
-        $token = Registry::getRequest()->getRequestParameter('pc-token', '');
-        if(empty($token)) {
-            $this->logger->warning('POWER CAPTCHA could not verify token, because it is empty.');
-            $this->addErrorToDisplay();
-            return false; // TODO add message
+        try {
+            if(is_null($token)) {
+                $token = Registry::getRequest()->getRequestParameter('pc-token', false);
+                if(false === $token) {
+                    throw new UserError('The user request does not contain a token field.');
+                }
+            }
+            
+            if(empty($token)) {
+                throw new UserError('The user request contains an empty token.');
+            }
+
+            if(is_null($userFieldName)) {
+                $name = '';
+            } else {
+                $name = Registry::getRequest()->getRequestParameter($userFieldName, '');
+            }
+
+            $requestBody = json_encode([
+                'secret' => $this->moduleSettings->getSecretKey(),
+                'token' => $token,
+                'clientUid' => $this->moduleSettings->getClientUid(),
+                'name' => $name
+            ]);
+
+            $this->logger->debug('POWER CAPTCHA Token verification API request: '.$requestBody);
+
+            $curlHandle = $this->setupCurl($requestBody);
+
+            $responseBody = curl_exec($curlHandle);
+            $responseStatus = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
+            $curlError = curl_error($curlHandle);
+            curl_close($curlHandle);
+
+            $this->logger->debug('POWER CAPTCHA Token verifcation API result: '.var_export($responseBody, true).' / Status Code: '.$responseStatus);
+
+            if($responseStatus === 200) {
+                $response = json_decode($responseBody, true);
+                if(isset($response['success']) && boolval($responseBody['success'])) {
+                    $this->logger->debug('POWER CAPTCHA Token successfully verified.');
+                    return true;
+                } else {
+                    throw new UserError('Token was not solved by user or mismatch of clientUid or username.');
+                }
+            }
+            
+            if($responseStatus == 400) {
+                $response = json_decode($responseBody, true);
+                if(is_array($response['errors'])) {
+                    if(in_array('MISSING_SECRET', $response['errors']) || in_array('INVALID_SECRET', $response['errors'])) {
+                        throw new ApiError('Secret Key is invalid or missing in request. Please check your Secret Key!');
+                    } else {
+                        throw new UserError('User sent invalid or expired token.');
+                    }
+                }
+                throw new ApiError('API returned Bad Request (400). Response: '.var_export($response, true));
+            } 
+
+            if(!empty($curlError)) {
+                throw new ApiError('Error connecting to the API. Error: '.$curlError);
+            } else {
+                throw new ApiError('Unkown error connecting to the API. Status Code: '.$responseStatus.' / Request URL: '.$this->moduleSettings->getTokenVerificationUrl());
+            }    
+        } catch (UserError $e) {
+            $this->logger->warning(
+                'POWER CAPTCHA Token verification failed due to user input. Access is blocked. Reason: '.$e->getMessage()
+            );
+            $this->displayUserError();
+            return false;
+        } catch (ApiError $e) {
+            if($this->moduleSettings->getApiErrorPolicy() == Module::API_ERROR_POLICY_BLOCK_ACCESS) {
+                $this->logger->warning(
+                    'POWER CAPTCHA Token verification failed due to an API error. Access is blocked based on API Error Policy. Error: '.$e->getMessage()
+                );
+                $this->displayApiError();
+                return false;
+            } else {
+                $this->logger->error(
+                    'POWER CAPTCHA Token verification failed due to an API error. Access nevertheless is granted based on API Error Policy. Error: '.$e->getMessage()
+                );
+                return true;
+            }
         }
-
-        if($userFieldName) {
-            $name = Registry::getRequest()->getRequestParameter($userFieldName, '');
-        } else {
-            $name = '';
-        }
-
-        // TODO try catch? exception handling
-
-        // $logger = Registry::getLogger();
-
-        $curl = curl_init($this->moduleSettings->getTokenVerificationUrl()); // TODO outsource to moduleSettings
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl, CURLOPT_POST, TRUE);
-    
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-            'X-API-Key: '.$this->moduleSettings->getApiKey(), // your api key
-            'Content-Type: application/json'
-        ));
-    
-        $requestParams = json_encode(array(
-            'secret' => $this->moduleSettings->getSecretKey(), // your secret key
-            'token' => $token,
-            'clientUid' => $this->moduleSettings->getClientUid(), // unique client id (same value as in the data-client-uid attribute)
-            'name' => $name // field which was marked by 'data-pc-user' (optional)
-        ));
-
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $requestParams);
-
-        $this->logger->debug('POWER CAPTCHA Token Verification request: '.$requestParams, [__CLASS__, __FUNCTION__]);
-    
-        $result = curl_exec($curl);
-        curl_close($curl);
-
-        $this->logger->debug('POWER CAPTCHA Token Verification Result: '.$result, [__CLASS__, __FUNCTION__]);
-
-        $response = json_decode($result);
-
-        if($response->success) {
-            return true;
-        }
-
-        $this->addErrorToDisplay();
-        return false; // TODO error message?
     }
 
-    private function addErrorToDisplay() 
+    private function setupCurl(string $requestBody): CurlHandle {
+        $curlHandle = curl_init($this->moduleSettings->getTokenVerificationUrl());
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curlHandle, CURLOPT_POST, TRUE);
+        curl_setopt($curlHandle, CURLOPT_HTTPHEADER, [
+            'X-API-Key: '.$this->moduleSettings->getApiKey(),
+            'Content-Type: application/json'
+        ]);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $requestBody);
+
+        return $curlHandle;
+    }
+
+    private function displayUserError() 
     {
         $exception = oxNew(\OxidEsales\Eshop\Core\Exception\StandardException::class, 'POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_ERROR');
         // Display error without custom destination (will be showed in header)
@@ -92,6 +144,17 @@ class TokenVerification implements TokenVerificationInterface
             false,
             true,
             'powerCaptchaErrors'
+        );
+    }
+
+    private function displayApiError() 
+    {
+        $exception = oxNew(\OxidEsales\Eshop\Core\Exception\StandardException::class, 'POWER_CAPTCHA_SECURITY_CHECK_API_ERROR');
+        // Display error without custom destination (will be showed in header)
+        Registry::getUtilsView()->addErrorToDisplay(
+            $exception,
+            false,
+            true
         );
     }
 }

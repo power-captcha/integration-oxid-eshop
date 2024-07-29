@@ -42,6 +42,16 @@ class ModuleSettings implements ModuleSettingsInterface
         return Module::DEFAULT_CHECK_MODE;
     }
 
+    public function getApiErrorPolicy(): string
+    {
+        $policy = $this->getSettingString(Module::SETTING_NAME_API_ERROR_POLICY, Module::DEFAULT_API_ERROR_POLICY);
+        if(in_array($policy, [Module::API_ERROR_POLICY_GRANT_ACCESS, Module::API_ERROR_POLICY_BLOCK_ACCESS])) {
+            return $policy;
+        }
+
+        return Module::DEFAULT_API_ERROR_POLICY;
+    }
+
     public function isDebugMode(): bool
     {
         return $this->moduleSettingService->getBoolean(Module::SETTING_NAME_DEBUG_MODE, Module::MODULE_ID);

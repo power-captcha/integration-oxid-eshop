@@ -53,11 +53,20 @@ $aModule = [
             'group'       => Module::SETTING_GROUP_GENERAL,
             'name'        => Module::SETTING_NAME_CHECK_MODE,
             'type'        => 'select', 
-            'value'       => Module::CHECK_MODE_OPTION_AUTO,
+            'value'       => Module::DEFAULT_CHECK_MODE,
             'constraints' => 
                 Module::CHECK_MODE_OPTION_AUTO . '|' .
                 Module::CHECK_MODE_OPTION_HIDDEN . '|' .
                 Module::CHECK_MODE_OPTION_MANU
+        ],
+        [
+            'group'       => Module::SETTING_GROUP_GENERAL,
+            'name'        => Module::SETTING_NAME_API_ERROR_POLICY,
+            'type'        => 'select', 
+            'value'       => Module::DEFAULT_API_ERROR_POLICY,
+            'constraints' => 
+                Module::API_ERROR_POLICY_GRANT_ACCESS . '|' .
+                Module::API_ERROR_POLICY_BLOCK_ACCESS
         ],
         [
             'group'       => Module::SETTING_GROUP_GENERAL,

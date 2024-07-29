@@ -7,10 +7,13 @@ $aLang = [
 
     // General settings
     'SHOP_MODULE_GROUP_power_captcha_general'  => 'Allgemeine Einstellungen',
+
     'SHOP_MODULE_power_captcha_ApiKey'         => 'API-Key <strong>(erforderlich)</strong>',
     'HELP_SHOP_MODULE_power_captcha_ApiKey'    => 'Gib deinen POWER CAPTCHA API-Key ein. Den API-Key findest du im <a href="https://power-captcha.com/mein-konto/api-keys/" target="_blank">API-Key Management</a>.',
+    
     'SHOP_MODULE_power_captcha_SecretKey'      => 'Secret-Key <strong>(erforderlich)</strong>',
     'HELP_SHOP_MODULE_power_captcha_SecretKey' => 'Gib deinen POWER CAPTCHA Secret-Key ein. Den Secret-Key findest du im <a href="https://power-captcha.com/mein-konto/api-keys/" target="_blank">API-Key Management</a>.',
+    
     'SHOP_MODULE_power_captcha_CheckMode'      => 'Prüfmodus (optional)',
     'HELP_SHOP_MODULE_power_captcha_CheckMode' =>
         '<p>Konfiguriere die Anzeige des Widgets und das Verhalten der Sicherheitsprüfung.</p>
@@ -35,13 +38,34 @@ $aLang = [
     'SHOP_MODULE_power_captcha_CheckMode_auto'   => 'Automatisch',
     'SHOP_MODULE_power_captcha_CheckMode_hidden' => 'Versteckt',
     'SHOP_MODULE_power_captcha_CheckMode_manu'   => 'Manuell',
+
+    'SHOP_MODULE_power_captcha_ApiErrorPolicy'   => 'Richtlinie bei API-Fehlern (optional)',
+    'HELP_SHOP_MODULE_power_captcha_ApiErrorPolicy'   => '
+        <p>Konfigurieren das Verhalten bei Fehlern während der Token-Verifizierung über die POWER CAPTCHA API (z.B. bei Verbindungsproblemen zur API oder fehlerhafter Konfiguration).</p>
+        <ul>
+            <li>
+                <strong>Zugriff erlauben</strong> (Standard):
+                Der Zugriff wird erlaubt, falls ein API-Fehler auftritt.
+            </li>
+            <li>
+                <strong>Zugriff blockieren</strong>:
+                Der Zugriff wird blockiert, falls ein API-Fehler auftritt. Es wird eine Fehlermeldung angezeigt, die dazu auffordert, es später erneut zu versuchen.
+            </li>
+        </ul>
+        <p>Hinweis: Fehlermeldungen werden unabhänging von dieser Einstellung immer im Log protokolliert.</p>
+        ',
+    'SHOP_MODULE_power_captcha_ApiErrorPolicy_grantAccess'   => 'Zugriff erlauben',
+    'SHOP_MODULE_power_captcha_ApiErrorPolicy_blockAccess'   => 'Zugriff blockieren',
+
     'SHOP_MODULE_power_captcha_DebugMode'        => 'Debug-Modus (optional)',
     'HELP_SHOP_MODULE_power_captcha_DebugMode'   => 'Der Debug-Modus aktiviert die Log-Ausgabe in der Browser-Konsole.',
     
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-Premises Einstellungen',
+
     'SHOP_MODULE_power_captcha_EndpointBaseUrl'           => 'Basis-URL des Endpunktes (optional)',
     'HELP_SHOP_MODULE_power_captcha_EndpointBaseUrl'      => 'Nur erforderlich, wenn du eine On-Premises-Lösung mit selbst gehostetem POWER CAPTCHA Endpunkt hast.',
+    
     'SHOP_MODULE_power_captcha_JavaScriptBaseUrl'         => 'JavaScript Basis-URL (optional)',
     'HELP_SHOP_MODULE_power_captcha_JavaScriptBaseUrl'    => 'Nur erforderlich, wenn du eine On-Premises-Lösung mit selbst gehostetem POWER CAPTCHA-JavaScript hast.',
 

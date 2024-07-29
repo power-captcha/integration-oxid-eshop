@@ -16,11 +16,16 @@ final class Module
     public const DEFAULT_ENDPOINT_BASE_URL = 'https://api.power-captcha.com';
     public const DEFAULT_JAVASCRIPT_BASE_URL = 'https://cdn.power-captcha.com';
     public const DEFAULT_CHECK_MODE = self::CHECK_MODE_OPTION_AUTO;
+    public const DEFAULT_API_ERROR_POLICY = self::API_ERROR_POLICY_GRANT_ACCESS;
     
     // Check mode options
     public const CHECK_MODE_OPTION_AUTO = 'auto';
     public const CHECK_MODE_OPTION_MANU = 'manu';
     public const CHECK_MODE_OPTION_HIDDEN = 'hidden';
+
+    // Api error policy options
+    public const API_ERROR_POLICY_GRANT_ACCESS = 'grantAccess';
+    public const API_ERROR_POLICY_BLOCK_ACCESS = 'blockAccess';
 
     // Settings names
     // General settings
@@ -31,6 +36,8 @@ final class Module
     public const SETTING_NAME_SECRET_KEY = 'power_captcha_SecretKey';
 
     public const SETTING_NAME_CHECK_MODE = 'power_captcha_CheckMode';
+
+    public const SETTING_NAME_API_ERROR_POLICY = 'power_captcha_ApiErrorPolicy';
 
     public const SETTING_NAME_DEBUG_MODE = 'power_captcha_DebugMode';
 

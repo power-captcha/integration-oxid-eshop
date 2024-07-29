@@ -6,5 +6,5 @@ namespace PowerCaptcha\OxidEshop\Service;
 
 interface TokenVerificationInterface
 {
-    public function verifyToken($userFieldName = null): bool;
+    public function verifyToken(string $userFieldName = null, string $token = null): bool;
 }
