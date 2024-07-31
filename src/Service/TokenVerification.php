@@ -69,7 +69,7 @@ class TokenVerification implements TokenVerificationInterface
 
             if($responseStatus === 200) {
                 $response = json_decode($responseBody, true);
-                if(isset($response['success']) && boolval($responseBody['success'])) {
+                if(isset($response['success']) && boolval($response['success'])) {
                     $this->logger->debug('POWER CAPTCHA Token successfully verified.');
                     return true;
                 } else {
