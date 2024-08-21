@@ -37,17 +37,15 @@
 
             loginBoxForm.addEventListener('PowerCaptchaReady', (e) => {
                 const pc = e.detail.captcha;
-                
+
                 pc.addEventListener('modalShow', e => {
                     // Turn off autoClose while the modal is shown
                     dropDownMenu._config.autoClose = false;
-                    console.log('modal show', dropDownMenu._config);
                 });
 
                 pc.addEventListener('modalHide', e => {
                     // Turn on autoClose when the modal is hidden again
                     dropDownMenu._config.autoClose = 'outside';
-                    console.log('modal close', dropDownMenu._config);
                 });
             });
         })();
