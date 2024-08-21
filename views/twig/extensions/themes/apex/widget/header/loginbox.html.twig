@@ -1,0 +1,59 @@
+{% extends "widget/header/loginbox.html.twig" %}
+{% block thirdparty_login %}
+
+    {#
+        Since there is no Twig block available before the login box submit button,
+        we use JavaScript to locate the login box form and insert the widget before the submit button.
+        We also need to modify the autoClose behavior of the bootstrap dropdown to prevent the login box from closing.
+    #}
+    {% capture assign = "loginBoxCaptchaJS" %}
+        (function () {
+            // Find the login box form
+            const loginBoxForm = [...document.querySelectorAll("form[name='login']")]
+                .find((elem) => elem.querySelector('#loginEmail') !== null);
+            
+            if(!loginBoxForm) {
+                return; // login box form not found
+            }
+
+            // Locate the submit button of the login box
+            const loginBoxSubmitButton = loginBoxForm.querySelector("button[type='submit']");
+            
+            // Create container for the captcha widget
+            const captchaContainer = document.createElement('div');
+            captchaContainer.classList.add('mb-3');
+            captchaContainer.innerHTML = `
+                {% include '@power_captcha/templates/widget.html.twig' with { pcUserInputField: '#loginEmail' } %}
+            `;
+
+            // Insert container with widget before the submit button
+            loginBoxForm.insertBefore(captchaContainer, loginBoxSubmitButton);
+
+            // Find the bootstrap dropdown component which contains the login box.
+            const dropDownButton = document.querySelector('button[data-bs-toggle="dropdown"][aria-label="Usercenter"]');
+            const dropDownMenu = bootstrap.Dropdown.getOrCreateInstance(dropDownButton);
+            // Modify the autoClose behavior to prevent the login box from closing when the widget is clicked.
+            dropDownMenu._config.autoClose = 'outside';
+
+            loginBoxForm.addEventListener('PowerCaptchaReady', (e) => {
+                const pc = e.detail.captcha;
+                
+                pc.addEventListener('modalShow', e => {
+                    // Turn off autoClose while the modal is shown
+                    dropDownMenu._config.autoClose = false;
+                    console.log('modal show', dropDownMenu._config);
+                });
+
+                pc.addEventListener('modalHide', e => {
+                    // Turn on autoClose when the modal is hidden again
+                    dropDownMenu._config.autoClose = 'outside';
+                    console.log('modal close', dropDownMenu._config);
+                });
+            });
+        })();
+    {% endcapture %}
+
+    {{ script({ add: loginBoxCaptchaJS, priority: 10, dynamic: __oxid_include_dynamic }) }}
+
+    {{ parent() }}
+{% endblock %}
