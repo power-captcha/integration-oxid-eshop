@@ -32,6 +32,7 @@ $aModule = [
         OxidEsales\Eshop\Core\ViewConfig::class => PowerCaptcha\OxidEshop\Core\ViewConfig::class,
         OxidEsales\Eshop\Application\Component\UserComponent::class => PowerCaptcha\OxidEshop\Component\UserComponent::class,
         OxidEsales\Eshop\Application\Controller\OrderController::class => PowerCaptcha\OxidEshop\Controller\OrderController::class,
+        OxidEsales\Eshop\Application\Controller\ContactController::class => PowerCaptcha\OxidEshop\Controller\ContactController::class,
     ],
     'controllers' => [
     ],
