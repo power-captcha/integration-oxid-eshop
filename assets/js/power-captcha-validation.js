@@ -4,6 +4,8 @@ document.addEventListener('PowerCaptchaReady', (e) => {
     form.addEventListener('submit', (event) => {
         if(!pc.checkValidity()) {
             event.preventDefault();
+            // scroll to invalid widget
+            pc.widgetContainer.scrollIntoView({block: "center"});
         }
     });
 
@@ -17,5 +19,7 @@ document.addEventListener('PowerCaptchaReady', (e) => {
     
     if(pc.widgetContainer.classList.contains('pc-show-invalid')) {
         pc.showInvalid(); // show invalid again after backend validation
+        // scroll to invalid widget
+        pc.widgetContainer.scrollIntoView({block: "center"});
     }
 });
