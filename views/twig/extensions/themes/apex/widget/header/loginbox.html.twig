@@ -16,6 +16,9 @@
                 return; // login box form not found
             }
 
+            // Set email field to required
+            loginBoxForm.querySelector('#loginEmail').required = true;
+
             // Locate the submit button of the login box
             const loginBoxSubmitButton = loginBoxForm.querySelector("button[type='submit']");
             
