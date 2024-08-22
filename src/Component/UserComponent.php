@@ -9,7 +9,6 @@ use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
  */
 class UserComponent extends UserComponent_parent
 {
-    // TODO Add integration for small login popup
 
     public function login() 
     {
@@ -23,6 +22,19 @@ class UserComponent extends UserComponent_parent
 
         // Token verified
         return parent::login();
+    }
+
+    public function createUser()
+    {
+        $tokenVerification = $this->getService(TokenVerificationInterface::class);
+        
+        if(false === $tokenVerification->verifyToken('lgn_usr')) {
+            // Token not verified
+            return false;
+        }
+
+        // Token verified
+        return parent::createUser();
     }
 
 }
