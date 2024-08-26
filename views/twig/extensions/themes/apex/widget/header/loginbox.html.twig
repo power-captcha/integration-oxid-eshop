@@ -24,9 +24,8 @@
             
             // Create container for the captcha widget
             const captchaContainer = document.createElement('div');
-            captchaContainer.classList.add('mb-3');
             captchaContainer.innerHTML = `
-                {% include '@power_captcha/templates/widget.html.twig' with { pcUserInputField: '#loginEmail' } %}
+                {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' with { pcUserInputField: '#loginEmail' } %}
             `;
 
             // Insert container with widget before the submit button

@@ -1,14 +1,5 @@
 {% extends "form/login.html.twig" %}
 {% block checkout_options_login_passwordfield %}
     {{ parent() }}
-
-    <div class="mb-3">
-        {% include '@power_captcha/templates/widget.html.twig' with {pcUserInputField: '#lgn_usr'} %}
-
-        {% if Errors.powerCaptchaErrors %}
-        <div class="mt-1 text-danger">
-            <p>{{ translate({ ident: "POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT" }) }}</p>
-        </div>
-        {% endif %}
-    </div>
+    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' with {pcUserInputField: '#lgn_usr'} %}
 {% endblock %}

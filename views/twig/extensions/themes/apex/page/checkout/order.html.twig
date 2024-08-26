@@ -1,19 +1,10 @@
 {% extends "page/checkout/order.html.twig" %}
 {% block checkout_order_next_step_side %}
-    <div class="mb-3">
-        {# 
-            TODO: The form 'orderConfirmAgbTop' is needed for the captcha token. 
-            But if oView.isLowOrderPrice() is true, then the form is not displayed (see original order.html.twig).
-            We need to ensure, that the captcha regardless of oView.isLowOrderPrice().
-        #}
-        {% include '@power_captcha/templates/widget.html.twig' with {pcUserInputField: '', pcFormElement: '#orderConfirmAgbBottom'} %}
-
-        {% if Errors.powerCaptchaErrors %}
-        <div class="mt-1 text-danger">
-            <p>{{ translate({ ident: "POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT" }) }}</p>
-        </div>
-        {% endif %}
-    </div>
-
+    {# 
+        TODO: The form 'orderConfirmAgbTop' is needed for the captcha token. 
+        But if oView.isLowOrderPrice() is true, then the form is not displayed (see original order.html.twig).
+        We need to ensure, that the captcha regardless of oView.isLowOrderPrice().
+    #}
+    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' with {pcUserInputField: '', pcFormElement: '#orderConfirmAgbBottom'} %}
     {{ parent() }}
 {% endblock %}
