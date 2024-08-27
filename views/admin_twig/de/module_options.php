@@ -16,7 +16,7 @@ $aLang = [
     
     'SHOP_MODULE_power_captcha_CheckMode'      => 'Prüfmodus (optional)',
     'HELP_SHOP_MODULE_power_captcha_CheckMode' =>
-        '<p>Konfiguriere die Anzeige des Widgets und das Verhalten der Sicherheitsprüfung.</p>
+        '<p>Konfiguriert die Anzeige des Widgets und das Verhalten der Sicherheitsprüfung.</p>
         <p>Es gibt drei Optionen:
         <ul>
             <li>
@@ -41,7 +41,7 @@ $aLang = [
 
     'SHOP_MODULE_power_captcha_ApiErrorPolicy'   => 'Richtlinie bei API-Fehlern (optional)',
     'HELP_SHOP_MODULE_power_captcha_ApiErrorPolicy'   => '
-        <p>Konfigurieren das Verhalten bei Fehlern während der Token-Verifizierung über die POWER CAPTCHA API (z.B. bei Verbindungsproblemen zur API oder fehlerhafter Konfiguration).</p>
+        <p>Konfiguriert das Verhalten bei Fehlern während der Token-Verifizierung über die POWER CAPTCHA API (z.B. bei Verbindungsproblemen zur API oder fehlerhafter Konfiguration).</p>
         <ul>
             <li>
                 <strong>Zugriff erlauben</strong> (Standard):
