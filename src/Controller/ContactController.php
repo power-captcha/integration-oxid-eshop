@@ -14,7 +14,7 @@ class ContactController extends ContactController_parent
     {
         $tokenVerification = $this->getService(TokenVerificationInterface::class);
 
-        if(false === $tokenVerification->verifyToken('editval[oxuser__oxusername]')) {
+        if(false === $tokenVerification->verifyToken('CONTACT', 'editval[oxuser__oxusername]')) {
              // Token not verified
             return false;
         }

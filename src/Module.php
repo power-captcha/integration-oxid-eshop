@@ -41,6 +41,17 @@ final class Module
 
     public const SETTING_NAME_DEBUG_MODE = 'power_captcha_DebugMode';
 
+    // Protected sections
+    public const SETTING_GROUP_PROTECTED_SECTIONS = 'power_captcha_protected_sections';
+
+    public const SETTING_NAME_PROTECT_LOGIN = 'power_captcha_ProtectLogin';
+
+    public const SETTING_NAME_PROTECT_REGISTER = 'power_captcha_ProtectRegister';
+
+    public const SETTING_NAME_PROTECT_CHECKOUT = 'power_captcha_ProtectCheckout';
+
+    public const SETTING_NAME_PROTECT_CONTACT = 'power_captcha_ProtectContact';
+
     // On-premises settings
     public const SETTING_GROUP_ONPREMISES = 'power_captcha_onpremises';
 

@@ -76,6 +76,32 @@ $aModule = [
             'value'       => false
         ],
 
+        /** Protected sections */
+        [
+            'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
+            'name'        => Module::SETTING_NAME_PROTECT_LOGIN,
+            'type'        => 'bool', 
+            'value'       => true
+        ],
+        [
+            'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
+            'name'        => Module::SETTING_NAME_PROTECT_REGISTER,
+            'type'        => 'bool', 
+            'value'       => true
+        ],
+        [
+            'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
+            'name'        => Module::SETTING_NAME_PROTECT_CHECKOUT,
+            'type'        => 'bool', 
+            'value'       => true
+        ],
+        [
+            'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
+            'name'        => Module::SETTING_NAME_PROTECT_CONTACT,
+            'type'        => 'bool', 
+            'value'       => true
+        ],
+
         /** On-premises settings */
         [
             'group'       => Module::SETTING_GROUP_ONPREMISES,

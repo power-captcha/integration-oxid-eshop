@@ -60,6 +60,21 @@ $aLang = [
     'SHOP_MODULE_power_captcha_DebugMode'        => 'Debug-Modus (optional)',
     'HELP_SHOP_MODULE_power_captcha_DebugMode'   => 'Der Debug-Modus aktiviert die Log-Ausgabe in der Browser-Konsole.',
     
+    // Protected sections
+    'SHOP_MODULE_GROUP_power_captcha_protected_sections' => 'Geschützte Bereiche / Formulare',
+
+    'SHOP_MODULE_power_captcha_ProtectLogin'            => 'Login-Formulare',
+    'HELP_SHOP_MODULE_power_captcha_ProtectLogin'       => 'Schutz in Login-Formularen aktivieren (Anmeldung auf der <i>Mein Konto</i>-Seite, Anmeldung während der Bestellung, Login-Box)',
+
+    'SHOP_MODULE_power_captcha_ProtectRegister'         => 'Registrierungsformulare',
+    'HELP_SHOP_MODULE_power_captcha_ProtectRegister'    => 'Schutz in Registrierungsformularen aktivieren (Registrierung auf der <i>Konto eröffnen</i>-Seite, Registrierung während der Bestellung)',
+
+    'SHOP_MODULE_power_captcha_ProtectCheckout'         => 'Abschluss der Bestellung',
+    'HELP_SHOP_MODULE_power_captcha_ProtectCheckout'    => 'Schutz für den Abschluss von Bestellungen aktivieren',
+
+    'SHOP_MODULE_power_captcha_ProtectContact'          => 'Kontaktformular',
+    'HELP_SHOP_MODULE_power_captcha_ProtectContact'     => 'Schutz im Kontaktformular aktivieren',
+
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-Premises Einstellungen',
 

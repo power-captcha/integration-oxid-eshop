@@ -22,13 +22,17 @@ class TokenVerification implements TokenVerificationInterface
     ) {
     }
 
-    public function verifyToken(string $userFieldName = null, string $token = null): bool
+    public function verifyToken(string|null $section, string $userFieldName = null, string $token = null): bool
     {
-        if(false ===$this->moduleSettings->isConfigured()) {
+        if(false === $this->moduleSettings->isConfigured()) {
             $this->logger->error(
                 'POWER CAPTCHA Token verification is skipped due to missing configuration! Please provide API Key and Secret Key.'
             );
             return true;
+        }
+
+        if(false === $this->moduleSettings->isProtectionEnabled($section)) {
+            return true; // skip token verification due to the disabled protection for the section
         }
 
         try {

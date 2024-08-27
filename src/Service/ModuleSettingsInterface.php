@@ -8,6 +8,8 @@ interface ModuleSettingsInterface
 {
     public function isConfigured(): bool;
 
+    public function isProtectionEnabled(string|null $section): bool;
+
     public function getApiKey(): string;
 
     public function getSecretKey(): string;

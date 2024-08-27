@@ -1,19 +1,21 @@
-{% block power_captcha_widget %}
-    {% set powerCaptcha = oViewConf.getPowerCaptchaSettings() %}
-    {{ script({ include: powerCaptcha.getJavaScriptUrl() }) }}
-    {{ script({ include: oViewConf.getModuleUrl("power_captcha", "js/power-captcha-validation.js") }) }}
+{% set powerCaptcha = oViewConf.getPowerCaptchaSettings() %}
+{% if powerCaptcha.isConfigured() and powerCaptcha.isProtectionEnabled(powerCaptchaSection) %}
+    {% block power_captcha_widget %}
+        {{ script({ include: powerCaptcha.getJavaScriptUrl() }) }}
+        {{ script({ include: oViewConf.getModuleUrl("power_captcha", "js/power-captcha-validation.js") }) }}
 
-    <div data-pc-api-key="{{ powerCaptcha.getApiKey() }}" 
-        data-pc-client-uid="{{ powerCaptcha.getClientUid() }}"
-        data-pc-endpoint="{{ powerCaptcha.getTokenRequestUrl() }}"
-        data-pc-check-mode="{{ powerCaptcha.getCheckMode() }}"
-        {% if pcUserInputField %}
-        data-pc-user-input-field="{{ pcUserInputField  }}"
-        {% endif %}
-        {% if pcFormElement %}
-        data-pc-form-element="{{ pcFormElement }}"
-        {% endif %}
-        data-pc-debug="{{ powerCaptcha.isDebugMode() ? 'true' : 'false' }}"
-        class="{% if Errors.powerCaptchaErrors %}pc-show-invalid{% endif %}">
-    </div>
-{% endblock %}
+        <div data-pc-api-key="{{ powerCaptcha.getApiKey() }}" 
+            data-pc-client-uid="{{ powerCaptcha.getClientUid() }}"
+            data-pc-endpoint="{{ powerCaptcha.getTokenRequestUrl() }}"
+            data-pc-check-mode="{{ powerCaptcha.getCheckMode() }}"
+            {% if pcUserInputField %}
+            data-pc-user-input-field="{{ pcUserInputField  }}"
+            {% endif %}
+            {% if pcFormElement %}
+            data-pc-form-element="{{ pcFormElement }}"
+            {% endif %}
+            data-pc-debug="{{ powerCaptcha.isDebugMode() ? 'true' : 'false' }}"
+            class="{% if Errors.powerCaptchaErrors %}pc-show-invalid{% endif %}">
+        </div>
+    {% endblock %}
+{% endif %}

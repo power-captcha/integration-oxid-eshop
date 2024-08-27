@@ -22,6 +22,22 @@ class ModuleSettings implements ModuleSettingsInterface
         return !empty($this->getApiKey()) && !empty($this->getSecretKey());
     }
 
+    public function isProtectionEnabled(string|null $section): bool
+    {
+        switch($section) {
+            case 'LOGIN': 
+                return $this->getSettingBool(Module::SETTING_NAME_PROTECT_LOGIN);
+            case 'REGISTER':
+                return $this->getSettingBool(Module::SETTING_NAME_PROTECT_REGISTER);
+            case 'CHECKOUT':
+                return $this->getSettingBool(Module::SETTING_NAME_PROTECT_CHECKOUT);
+            case 'CONTACT':
+                return $this->getSettingBool(Module::SETTING_NAME_PROTECT_CONTACT);
+            default:
+                return true;
+        }
+    }
+
     public function getApiKey(): string
     {
         return $this->getSettingString(Module::SETTING_NAME_API_KEY);
@@ -54,7 +70,7 @@ class ModuleSettings implements ModuleSettingsInterface
 
     public function isDebugMode(): bool
     {
-        return $this->moduleSettingService->getBoolean(Module::SETTING_NAME_DEBUG_MODE, Module::MODULE_ID);
+        return $this->getSettingBool(Module::SETTING_NAME_DEBUG_MODE);
     }
 
     public function getClientUid(): string
@@ -101,6 +117,14 @@ class ModuleSettings implements ModuleSettingsInterface
             if(!empty($settingValue)) {
                 return $settingValue;
             }
+        }
+        return $fallbackValue;
+    }
+
+    private function getSettingBool(string $settingName, bool $fallbackValue = false): bool
+    {
+        if($this->moduleSettingService->exists($settingName, Module::MODULE_ID)) {
+            return $this->moduleSettingService->getBoolean($settingName, Module::MODULE_ID);
         }
         return $fallbackValue;
     }

@@ -1,4 +1,5 @@
 {% extends "form/contact.html.twig" %}
 {% block captcha_form %}
-    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' with {pcUserInputField: '#loginUser'} %}
+    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' 
+        with {powerCaptchaSection: 'CONTACT', pcUserInputField: '#loginUser'} %}
 {% endblock %}
