@@ -33,6 +33,7 @@ $aModule = [
         OxidEsales\Eshop\Application\Component\UserComponent::class => PowerCaptcha\OxidEshop\Component\UserComponent::class,
         OxidEsales\Eshop\Application\Controller\OrderController::class => PowerCaptcha\OxidEshop\Controller\OrderController::class,
         OxidEsales\Eshop\Application\Controller\ContactController::class => PowerCaptcha\OxidEshop\Controller\ContactController::class,
+        OxidEsales\Eshop\Application\Controller\ForgotPasswordController::class => PowerCaptcha\OxidEshop\Controller\ForgotPasswordController::class,
     ],
     'controllers' => [
     ],
@@ -98,6 +99,12 @@ $aModule = [
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_CONTACT,
+            'type'        => 'bool', 
+            'value'       => true
+        ],
+        [
+            'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
+            'name'        => Module::SETTING_NAME_PROTECT_FORGOTPWD,
             'type'        => 'bool', 
             'value'       => true
         ],

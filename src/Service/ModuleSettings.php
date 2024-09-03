@@ -33,6 +33,8 @@ class ModuleSettings implements ModuleSettingsInterface
                 return $this->getSettingBool(Module::SETTING_NAME_PROTECT_CHECKOUT);
             case 'CONTACT':
                 return $this->getSettingBool(Module::SETTING_NAME_PROTECT_CONTACT);
+            case 'FORGOTPWD':
+                return $this->getSettingBool(Module::SETTING_NAME_PROTECT_FORGOTPWD);
             default:
                 return true;
         }

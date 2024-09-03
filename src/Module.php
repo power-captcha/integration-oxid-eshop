@@ -52,6 +52,8 @@ final class Module
 
     public const SETTING_NAME_PROTECT_CONTACT = 'power_captcha_ProtectContact';
 
+    public const SETTING_NAME_PROTECT_FORGOTPWD = 'power_captcha_ProtectForgotPwd';
+
     // On-premises settings
     public const SETTING_GROUP_ONPREMISES = 'power_captcha_onpremises';
 

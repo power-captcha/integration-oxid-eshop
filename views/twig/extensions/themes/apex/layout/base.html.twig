@@ -1,0 +1,44 @@
+
+{% extends "layout/base.html.twig" %}
+{% block base_js %}
+        
+    {{ parent() }}
+
+    {% if oViewConf.getTopActiveClassName() == 'forgotpwd' and oViewConf.getPowerCaptchaSettings().isProtectionEnabled('FORGOTPWD') %}
+        {#
+            Since there is no Twig block available in the forgot password form template (apex\tpl\form\forgotpwd_email.html.twig),
+            we use JavaScript to insert the widget.
+        #}
+        {% capture assign = "forgotPwdCaptchaJS" %}
+            (function () {
+                // Find the forgot password form
+                const forgotPwdForm = document.querySelector("form[name='forgotpwd']");
+                const emailField = forgotPwdForm.querySelector("input[name='lgn_usr']");
+
+                if(!forgotPwdForm || !emailField) {
+                    return; //form not found
+                }
+
+                // Set email field to required
+                emailField.required = true;
+
+                // Locate the submit button
+                const forgotPwdSubmitButton = forgotPwdForm.querySelector("button[type='submit']");
+                
+                // Create container for the captcha widget
+                const captchaContainer = document.createElement('div');
+                captchaContainer.innerHTML = `
+                    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' with 
+                    { powerCaptchaSection: 'FORGOTPWD', pcUserInputField: "input[name='lgn_usr']" } %}
+                `;
+
+                // Insert container with widget before the submit button
+                forgotPwdSubmitButton.parentNode.insertBefore(captchaContainer, forgotPwdSubmitButton);
+
+            })();
+        {% endcapture %}
+
+        {{ script({ add: forgotPwdCaptchaJS, priority: 10, dynamic: __oxid_include_dynamic }) }}
+    {% endif %}
+
+{% endblock %}

@@ -75,6 +75,9 @@ $aLang = [
     'SHOP_MODULE_power_captcha_ProtectContact'          => 'Kontaktformular',
     'HELP_SHOP_MODULE_power_captcha_ProtectContact'     => 'Schutz im Kontaktformular aktivieren',
 
+    'SHOP_MODULE_power_captcha_ProtectForgotPwd'          => 'Formular zum Zurücksetzen des Passworts',
+    'HELP_SHOP_MODULE_power_captcha_ProtectForgotPwd'     => 'Schutz im Formular zum Zurücksetzen des Passworts (<i>Passwort vergessen</i>-Seite) aktivieren',
+
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-Premises Einstellungen',
 
