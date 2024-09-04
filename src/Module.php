@@ -54,6 +54,8 @@ final class Module
 
     public const SETTING_NAME_PROTECT_FORGOTPWD = 'power_captcha_ProtectForgotPwd';
 
+    public const SETTING_NAME_PROTECT_NEWSLETTER = 'power_captcha_ProtectNewsletter';
+
     // On-premises settings
     public const SETTING_GROUP_ONPREMISES = 'power_captcha_onpremises';
 

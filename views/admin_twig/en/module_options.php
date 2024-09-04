@@ -79,6 +79,9 @@ $aLang = [
     'SHOP_MODULE_power_captcha_ProtectForgotPwd'          => 'Password reset form',
     'HELP_SHOP_MODULE_power_captcha_ProtectForgotPwd'     => 'Activate protection in the password reset form (forgot password page)',
 
+    'SHOP_MODULE_power_captcha_ProtectNewsletter'          => 'Newsletter form',
+    'HELP_SHOP_MODULE_power_captcha_ProtectNewsletter'     => 'Activate protection in the newsletter form (subscribe and unsubscribe)',
+
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-premise settings',
     

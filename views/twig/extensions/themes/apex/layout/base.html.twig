@@ -41,4 +41,41 @@
         {{ script({ add: forgotPwdCaptchaJS, priority: 10, dynamic: __oxid_include_dynamic }) }}
     {% endif %}
 
+    {% if oViewConf.getTopActiveClassName() == 'newsletter' and oViewConf.getPowerCaptchaSettings().isProtectionEnabled('NEWSLETTER') %}
+        {#
+            Since there is no Twig block available in the newsletter form template (apex\tpl\form\newsletter.html.twig),
+            we use JavaScript to insert the widget.
+        #}
+        {% capture assign = "newsletterCaptchaJS" %}
+            (function () {
+                // Find the newsletter form
+                const newsletterForm = Array.from(document.querySelectorAll("form")).find(
+                    (form) => form.querySelector("input[name='cl'][value='newsletter']") && 
+                                form.querySelector("input[name='fnc'][value='send']"));
+
+                const emailField = newsletterForm.querySelector("input[name='editval[oxuser__oxusername]']");
+
+                if(!newsletterForm || !emailField) {
+                    return; //form not found
+                }
+
+                // Locate the submit button
+                const newsletterSubmitButton = newsletterForm.querySelector("button[type='submit']");
+                
+                // Create container for the captcha widget
+                const captchaContainer = document.createElement('div');
+                captchaContainer.innerHTML = `
+                    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' with 
+                    { powerCaptchaSection: 'NEWSLETTER', pcUserInputField: "input[name='editval[oxuser__oxusername]']" } %}
+                `;
+
+                // Insert container with widget before the submit button
+                newsletterSubmitButton.parentNode.insertBefore(captchaContainer, newsletterSubmitButton);
+
+            })();
+        {% endcapture %}
+
+        {{ script({ add: newsletterCaptchaJS, priority: 10, dynamic: __oxid_include_dynamic }) }}
+    {% endif %}
+
 {% endblock %}

@@ -78,6 +78,10 @@ $aLang = [
     'SHOP_MODULE_power_captcha_ProtectForgotPwd'          => 'Formular zum Zurücksetzen des Passworts',
     'HELP_SHOP_MODULE_power_captcha_ProtectForgotPwd'     => 'Schutz im Formular zum Zurücksetzen des Passworts (<i>Passwort vergessen</i>-Seite) aktivieren',
 
+    'SHOP_MODULE_power_captcha_ProtectNewsletter'          => 'Newsletterformular',
+    'HELP_SHOP_MODULE_power_captcha_ProtectNewsletter'     => 'Schutz im Newsletterformular (An- und Abmeldung) aktivieren',
+
+
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-Premises Einstellungen',
 
