@@ -81,6 +81,8 @@ $aLang = [
     'SHOP_MODULE_power_captcha_ProtectNewsletter'          => 'Newsletterformular',
     'HELP_SHOP_MODULE_power_captcha_ProtectNewsletter'     => 'Schutz im Newsletterformular (An- und Abmeldung) aktivieren',
 
+    'SHOP_MODULE_power_captcha_ProtectWishedPrice'         => 'Wunschpreis-Formular',
+    'HELP_SHOP_MODULE_power_captcha_ProtectWishedPrice'    => 'Schutz im Wunschpreis-Formular (ehemals Preisalarm) aktivieren',
 
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-Premises Einstellungen',

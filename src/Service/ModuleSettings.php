@@ -37,6 +37,8 @@ class ModuleSettings implements ModuleSettingsInterface
                 return $this->getSettingBool(Module::SETTING_NAME_PROTECT_FORGOTPWD);
             case 'NEWSLETTER':
                 return $this->getSettingBool(Module::SETTING_NAME_PROTECT_NEWSLETTER);
+            case 'WISHEDPRICE':
+                return $this->getSettingBool(Module::SETTING_NAME_PROTECT_WISHEDPRICE);
             default:
                 return true;
         }

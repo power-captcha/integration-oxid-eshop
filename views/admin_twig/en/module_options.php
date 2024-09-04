@@ -82,6 +82,9 @@ $aLang = [
     'SHOP_MODULE_power_captcha_ProtectNewsletter'          => 'Newsletter form',
     'HELP_SHOP_MODULE_power_captcha_ProtectNewsletter'     => 'Activate protection in the newsletter form (subscribe and unsubscribe)',
 
+    'SHOP_MODULE_power_captcha_ProtectWishedPrice'         => 'Wished price form',
+    'HELP_SHOP_MODULE_power_captcha_ProtectWishedPrice'    => 'Activate protection in the wished price form (formerly price alert)',
+
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-premise settings',
     

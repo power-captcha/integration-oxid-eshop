@@ -1,0 +1,5 @@
+{% extends "form/pricealarm.html.twig" %}
+{% block captcha_form %}
+    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' 
+        with {powerCaptchaSection: 'WISHEDPRICE', pcUserInputField: "input[name='pa[email]']"} %}
+{% endblock %}

@@ -56,6 +56,8 @@ final class Module
 
     public const SETTING_NAME_PROTECT_NEWSLETTER = 'power_captcha_ProtectNewsletter';
 
+    public const SETTING_NAME_PROTECT_WISHEDPRICE = 'power_captcha_ProtectWishedPrice';
+
     // On-premises settings
     public const SETTING_GROUP_ONPREMISES = 'power_captcha_onpremises';
 

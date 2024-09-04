@@ -35,6 +35,7 @@ $aModule = [
         OxidEsales\Eshop\Application\Controller\ContactController::class => PowerCaptcha\OxidEshop\Controller\ContactController::class,
         OxidEsales\Eshop\Application\Controller\ForgotPasswordController::class => PowerCaptcha\OxidEshop\Controller\ForgotPasswordController::class,
         OxidEsales\Eshop\Application\Controller\NewsletterController::class => PowerCaptcha\OxidEshop\Controller\NewsletterController::class,
+        OxidEsales\Eshop\Application\Controller\PriceAlarmController::class => PowerCaptcha\OxidEshop\Controller\PriceAlarmController::class,
     ],
     'controllers' => [
     ],
@@ -112,6 +113,12 @@ $aModule = [
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_NEWSLETTER,
+            'type'        => 'bool', 
+            'value'       => true
+        ],
+        [
+            'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
+            'name'        => Module::SETTING_NAME_PROTECT_WISHEDPRICE,
             'type'        => 'bool', 
             'value'       => true
         ],
