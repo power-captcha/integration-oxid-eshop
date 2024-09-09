@@ -1,0 +1,12 @@
+{% extends "@power_captcha/templates/widget_base.html.twig" %}
+{% block power_captcha_widget %}
+    <div class="mb-3">
+        {{ parent() }}
+    </div>
+{% endblock %}
+
+{% block power_captcha_error_message %}
+    <div class="mt-1 text-danger">
+        <p>{{ parent() }}</p>
+    </div>
+{% endblock %}

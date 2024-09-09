@@ -1,0 +1,12 @@
+{% extends "@power_captcha/templates/widget_base.html.twig" %}
+{% block power_captcha_widget %}
+    <div style="margin-top: 10px; margin-bottom: 10px">
+        {{ parent() }}
+    </div>
+{% endblock %}
+
+{% block power_captcha_error_message %}
+    <p style="color: red; margin-bottom: 10px">
+        {{ parent() }}
+    </p>
+{% endblock %}

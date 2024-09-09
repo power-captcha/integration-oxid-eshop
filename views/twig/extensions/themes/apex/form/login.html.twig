@@ -1,6 +1,6 @@
 {% extends "form/login.html.twig" %}
 {% block checkout_options_login_passwordfield %}
     {{ parent() }}
-    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' 
+    {% include '@power_captcha/templates/apex_widget.html.twig' 
         with { powerCaptchaSection: 'LOGIN', pcUserInputField: '#lgn_usr' } %}
 {% endblock %}

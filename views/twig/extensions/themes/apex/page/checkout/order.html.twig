@@ -5,7 +5,7 @@
         But if oView.isLowOrderPrice() is true, then the form is not displayed (see original order.html.twig).
         We need to ensure, that the captcha regardless of oView.isLowOrderPrice().
     #}
-    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' 
+    {% include '@power_captcha/templates/apex_widget.html.twig' 
         with { powerCaptchaSection: 'CHECKOUT', pcUserInputField: '', pcFormElement: '#orderConfirmAgbBottom' } %}
     {{ parent() }}
 {% endblock %}

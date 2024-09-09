@@ -1,6 +1,6 @@
 {% extends "form/fieldset/user_account.html.twig" %}
 {% block user_account_newsletter %}
     {{ parent() }}
-    {% include '@power_captcha/templates/apex/power_captcha_widget.html.twig' 
+    {% include '@power_captcha/templates/apex_widget.html.twig' 
         with { powerCaptchaSection: 'REGISTER', pcUserInputField: '#userLoginName' } %}
 {% endblock %}

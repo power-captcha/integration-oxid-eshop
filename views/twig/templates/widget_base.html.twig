@@ -1,5 +1,6 @@
 {% set powerCaptcha = oViewConf.getPowerCaptchaSettings() %}
 {% if powerCaptcha.isConfigured() and powerCaptcha.isProtectionEnabled(powerCaptchaSection) %}
+
     {% block power_captcha_widget %}
         {{ script({ include: powerCaptcha.getJavaScriptUrl() }) }}
         {{ script({ include: oViewConf.getModuleUrl("power_captcha", "js/power-captcha-validation.js") }) }}
@@ -18,4 +19,11 @@
             class="{% if Errors.powerCaptchaErrors %}pc-show-invalid{% endif %}">
         </div>
     {% endblock %}
+
+    {% if Errors.powerCaptchaErrors %}
+        {% block power_captcha_error_message %}
+            {{ translate({ ident: "POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT" }) }}
+        {% endblock %}
+    {% endif %}
+
 {% endif %}
