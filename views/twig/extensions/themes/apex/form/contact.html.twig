@@ -1,5 +1,5 @@
 {% extends "form/contact.html.twig" %}
 {% block captcha_form %}
     {% include '@power_captcha/templates/apex_widget.html.twig' 
-        with {powerCaptchaSection: 'CONTACT', pcUserInputField: '#loginUser'} %}
+        with { powerCaptchaSection: 'CONTACT', pcUserInputField: "input[name='editval[oxuser__oxusername]']" } %}
 {% endblock %}

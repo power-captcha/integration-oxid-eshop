@@ -2,5 +2,5 @@
 {% block user_account_newsletter %}
     {{ parent() }}
     {% include '@power_captcha/templates/apex_widget.html.twig' 
-        with { powerCaptchaSection: 'REGISTER', pcUserInputField: '#userLoginName' } %}
+        with { powerCaptchaSection: 'REGISTER', pcUserInputField: "input[name='lgn_usr']" } %}
 {% endblock %}
