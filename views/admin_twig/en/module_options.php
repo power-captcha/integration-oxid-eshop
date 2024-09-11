@@ -8,11 +8,11 @@ $aLang = [
     // General settings
     'SHOP_MODULE_GROUP_power_captcha_general'   => 'General settings',
     
-    'SHOP_MODULE_power_captcha_api_key'         => 'API Key <strong>(required)</strong>',
-    'HELP_SHOP_MODULE_power_captcha_api_key'    => 'Enter your POWER CAPTCHA API Key. Find your API Key in the <a href="https://power-captcha.com/en/my-account/api-keys/" target="_blank">API Key Management</a>.',
+    'SHOP_MODULE_power_captcha_ApiKey'         => 'API Key <strong>(required)</strong>',
+    'HELP_SHOP_MODULE_power_captcha_ApiKey'    => 'Enter your POWER CAPTCHA API Key. Find your API Key in the <a href="https://power-captcha.com/en/my-account/api-keys/" target="_blank">API Key Management</a>.',
     
-    'SHOP_MODULE_power_captcha_secret_key'      => 'Secret Key <strong>(required)</strong>',
-    'HELP_SHOP_MODULE_power_captcha_secret_key' => 'Enter your POWER CAPTCHA Secret Key. Find your Secret Key in the <a href="https://power-captcha.com/en/my-account/api-keys/" target="_blank">API Key Management</a>.',
+    'SHOP_MODULE_power_captcha_SecretKey'      => 'Secret Key <strong>(required)</strong>',
+    'HELP_SHOP_MODULE_power_captcha_SecretKey' => 'Enter your POWER CAPTCHA Secret Key. Find your Secret Key in the <a href="https://power-captcha.com/en/my-account/api-keys/" target="_blank">API Key Management</a>.',
     
     'SHOP_MODULE_power_captcha_CheckMode'       => 'Check mode (optional)',
     'HELP_SHOP_MODULE_power_captcha_CheckMode'  =>
