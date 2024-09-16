@@ -91,7 +91,7 @@ $aLang = [
     'SHOP_MODULE_power_captcha_EndpointBaseUrl'           => 'Endpoint base URL (optional)',
     'HELP_SHOP_MODULE_power_captcha_EndpointBaseUrl'      => 'Only needed if you have an on-premises version with self-hosted POWER CAPTCHA endpoint.',
     
-    'SHOP_MODULE_power_captcha_JavascriptBaseUrl'         => 'JavaScript base URL (optional)',
-    'HELP_SHOP_MODULE_power_captcha_JavascriptBaseUrl'    => 'Only needed if you have an on-premises version with self-hosted POWER CAPTCHA JavaScript.',
+    'SHOP_MODULE_power_captcha_JavaScriptBaseUrl'         => 'JavaScript base URL (optional)',
+    'HELP_SHOP_MODULE_power_captcha_JavaScriptBaseUrl'    => 'Only needed if you have an on-premises version with self-hosted POWER CAPTCHA JavaScript.',
     
 ];
