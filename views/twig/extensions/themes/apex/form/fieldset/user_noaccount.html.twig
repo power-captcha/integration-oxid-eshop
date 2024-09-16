@@ -1,0 +1,6 @@
+{% extends "form/fieldset/user_noaccount.html.twig" %}
+{% block user_noaccount_newsletter %}
+    {{ parent() }}
+    {% include '@power_captcha/templates/apex_widget.html.twig' 
+        with { powerCaptchaSection: 'REGISTER', pcUserInputField: "input[name='lgn_usr']" } %}
+{% endblock %}

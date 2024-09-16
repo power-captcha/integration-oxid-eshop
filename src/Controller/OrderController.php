@@ -9,8 +9,6 @@ use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
  */
 class OrderController extends OrderController_parent
 {
-    // TODO Add integration for checkout without registration
-
     public function execute()
     {
         $tokenVerification = $this->getService(TokenVerificationInterface::class);
