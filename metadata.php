@@ -84,43 +84,43 @@ $aModule = [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_LOGIN,
             'type'        => 'bool', 
-            'value'       => true
+            'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_REGISTER,
             'type'        => 'bool', 
-            'value'       => true
+            'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_CHECKOUT,
             'type'        => 'bool', 
-            'value'       => true
+            'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_CONTACT,
             'type'        => 'bool', 
-            'value'       => true
+            'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_FORGOTPWD,
             'type'        => 'bool', 
-            'value'       => true
+            'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_NEWSLETTER,
             'type'        => 'bool', 
-            'value'       => true
+            'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_WISHEDPRICE,
             'type'        => 'bool', 
-            'value'       => true
+            'value'       => false
         ],
 
         /** On-premises settings */
