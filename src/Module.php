@@ -10,7 +10,7 @@ final class Module
 
     // Versions
     public const API_VERSION = 'v1';
-    public const JS_VERSION = '1.2.5'; // TODO release frontend version 1.2.5
+    public const JS_VERSION = '1.2.5';
 
     // Defaults
     public const DEFAULT_ENDPOINT_BASE_URL = 'https://api.power-captcha.com';
