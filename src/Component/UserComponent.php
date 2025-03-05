@@ -1,7 +1,7 @@
 <?php
 namespace PowerCaptcha\OxidEshop\Component;
 
-use PowerCaptcha\OxidEshop\Service\ModuleSettingsInterface;
+use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
 
 /**
@@ -13,7 +13,8 @@ class UserComponent extends UserComponent_parent
 
     public function login() 
     {
-        $tokenVerification = $this->getService(TokenVerificationInterface::class);
+        $container = ContainerFactory::getInstance()->getContainer();
+        $tokenVerification = $container->get(TokenVerificationInterface::class);
 
         if(false === $tokenVerification->verifyToken('LOGIN', 'lgn_usr')) {
             // Token not verified
@@ -27,8 +28,9 @@ class UserComponent extends UserComponent_parent
 
     public function createUser()
     {
-        $tokenVerification = $this->getService(TokenVerificationInterface::class);
-        
+        $container = ContainerFactory::getInstance()->getContainer();
+        $tokenVerification = $container->get(TokenVerificationInterface::class);
+
         if(false === $tokenVerification->verifyToken('REGISTER', 'lgn_usr')) {
             // Token not verified
             return false;

@@ -6,12 +6,12 @@ use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
 
 /**
  * @eshopExtension
- * @mixin \OxidEsales\Eshop\Application\Controller\PriceAlarmController;
+ * @mixin \OxidEsales\Eshop\Application\Controller\ArticleDetailsController;
  */
-class PriceAlarmController extends PriceAlarmController_parent
+class ArticleDetailsController extends ArticleDetailsController_parent
 {
  
-    public function addme()
+    public function addMe()
     {
         $container = ContainerFactory::getInstance()->getContainer();
         $tokenVerification = $container->get(TokenVerificationInterface::class);
@@ -22,7 +22,7 @@ class PriceAlarmController extends PriceAlarmController_parent
         }
 
         // Token verified
-        return parent::addme();
+        return parent::addMe();
     }
 
 }

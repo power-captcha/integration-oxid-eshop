@@ -11,6 +11,6 @@ class ViewConfig extends ViewConfig_parent
 {
     public function getPowerCaptchaSettings(): ModuleSettingsInterface
     {
-        return $this->getService(ModuleSettingsInterface::class);
+        return $this->getContainer()->get(ModuleSettingsInterface::class);
     }
 }

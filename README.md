@@ -67,53 +67,54 @@ These settings are only relevant if you are running a self-hosted POWER CAPTCHA 
 
 ### Installation for development
 
-1. Clone the module to `<shopRoot>/dev/power-captcha/integration-oxid-eshop`:
+1. Clone the module to the modules directory in the OXID eShop `<shopRoot>/source/modules/poca/power-captcha`:
     ```bash
     cd <shopRoot>
-    git clone https://github.com/power-captcha/integration-oxid-eshop dev/power-captcha/integration-oxid-eshop
+    git clone https://github.com/power-captcha/integration-oxid-eshop-65 source/modules/poca/power-captcha/
     ```
 
 2. Add and require the module from the local path via Composer:
     ```bash
     cd <shopRoot>
-    composer config repositories.power-captcha/integration-oxid-eshop path ./dev/power-captcha/integration-oxid-eshop
-    composer require power-captcha/integration-oxid-eshop:*
+    composer config repositories.power-captcha/integration-oxid-eshop-65 path ./source/modules/poca/power-captcha
+    composer require power-captcha/integration-oxid-eshop-65:@dev
     ```
+    **Important**: In case you’ll be asked if you want to overwrite this module files, you need to select “No” for an answer, otherwise all files will be corrupted.
 
 3. Install and activate the module using the OXID eShop console:
     ```bash
     cd <shopRoot>
-    vendor/bin/oe-console oe:module:install vendor/power-captcha/integration-oxid-eshop
-    vendor/bin/oe-console oe:module:activate power_captcha
+    vendor/bin/oe-console oe:module:install-configuration source/modules/poca/power-captcha
     ```
 
-3. Activate the module:
+4. Activate the module:
     ```bash
     cd <shopRoot>
-    bin/oe-console oe:module:activate power_captcha
+    vendor/bin/oe-console oe:module:activate power_captcha
     ```
 
 ### Useful commands
 
-* Reinstalling the module
-
-  After making changes, it is necessary to reinstall the module for the changes to take effect:
-  ```bash
-  cd <shopRoot>
-  vendor/bin/oe-console oe:module:install vendor/power-captcha/integration-oxid-eshop
-  ```
-
 * Reactivating the module
 
-  If you make changes to `services.yaml` (e.g. adding more services) or `metadata.php` (e.g. extending new OXID eShop components), you may need to reactivate the module:
+  After making changes, it is sometimes necessary to reacitvate the module for the changes to take effect:
   ```bash
   cd <shopRoot>
+  vendor/bin/oe-console oe:module:deactivate power_captcha
   vendor/bin/oe-console oe:module:activate power_captcha
+  ```
+
+* Reinstalling the module
+
+  If you make changes to `services.yaml` (e.g. adding more services) or `metadata.php` (e.g. extending new OXID eShop components or adding new smarty blocks and templats), you may need to reinstall the module:
+  ```bash
+  cd <shopRoot>
+  vendor/bin/oe-console oe:module:install-configuration source/modules/poca/power-captcha
   ```
 
 * Clearing the cache
 
-  You can clear the cache with 
+  After making changes to smarty blocks or templates, you may need to clear the cache with 
   ```bash
   cd <shopRoot>
   vendor/bin/oe-console oe:cache:clear

@@ -36,8 +36,66 @@ $aModule = [
         OxidEsales\Eshop\Application\Controller\ForgotPasswordController::class => PowerCaptcha\OxidEshop\Controller\ForgotPasswordController::class,
         OxidEsales\Eshop\Application\Controller\NewsletterController::class => PowerCaptcha\OxidEshop\Controller\NewsletterController::class,
         OxidEsales\Eshop\Application\Controller\PriceAlarmController::class => PowerCaptcha\OxidEshop\Controller\PriceAlarmController::class,
+        OxidEsales\Eshop\Application\Controller\ArticleDetailsController::class => PowerCaptcha\OxidEshop\Controller\ArticleDetailsController::class,
     ],
     'controllers' => [
+    ],
+    'templates' => [
+        'poca_widget.tpl'           => 'poca/power-captcha/views/tpl/poca_widget.tpl',
+        'poca_error_message.tpl'    => 'poca/power-captcha/views/tpl/poca_error_message.tpl',
+    ],
+    'blocks'      => [
+        // REGISTER Section (Azure)
+        [
+            'template' => 'form/fieldset/user_account.tpl',
+            'block'    => 'user_account_newsletter',
+            'file'     => 'views/blocks/user_account_newsletter.tpl',
+        ],
+        [
+            'template' => 'form/fieldset/user_noaccount.tpl',
+            'block'    => 'user_noaccount_newsletter',
+            'file'     => 'views/blocks/user_noaccount_newsletter.tpl',
+        ],
+        // CHECKOUT Section (Azure)
+        [
+            'template' => 'page/checkout/order.tpl',
+            'block'    => 'checkout_order_btn_confirm_bottom',
+            'file'     => 'views/blocks/checkout_order_btn_confirm_bottom.tpl',
+        ],
+        [
+            'template' => 'page/checkout/order.tpl',
+            'block'    => 'checkout_order_btn_confirm_top',
+            'file'     => 'views/blocks/checkout_order_btn_confirm_top.tpl',
+        ],
+        // LOGIN Section (Azure)
+        [
+            'template' => 'widget/header/loginbox.tpl',
+            'block'    => 'thirdparty_login',
+            'file'     => 'views/blocks/thirdparty_login.tpl',
+        ],
+        [
+            'template' => 'page/checkout/inc/options.tpl',
+            'block'    => 'checkout_options_login',
+            'file'     => 'views/blocks/checkout_options_login.tpl',
+        ],
+        // PRICEALARM Section
+        [
+            'template' => 'form/pricealarm.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/blocks/captcha_form_pricealarm.tpl',
+        ],
+        // CONTACT Section
+        [
+            'template' => 'form/contact.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/blocks/captcha_form_contact.tpl',
+        ],
+        // Azure LOGIN, FORGOTPWD, NEWSLETTER Section
+        [
+            'template' => 'layout/base.tpl',
+            'block'    => 'base_js',
+            'file'     => 'views/blocks/base_js.tpl'
+        ],
     ],
     'settings' => [
         /** General settings */
