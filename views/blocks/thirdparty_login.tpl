@@ -9,31 +9,24 @@
 
     [{capture assign="loginBoxPowerCaptchaJS"}]
         (function () {
-
-            // Find the login box
             const loginBox = document.querySelector("#loginBox");
-            const emailField = loginBox?.querySelector("input[name='lgn_usr']");
-
-            if(!loginBox || !emailField) {
+            if(!loginBox) {
                 return; //form not found
             }
 
+            const emailField = loginBox.querySelector("input[name='lgn_usr']");
+            const submitButton = loginBox.querySelector("button[type='submit']");
+
             // Resize login box
             loginBox.querySelector('.loginForm').style.width = 'auto';
-
             // Set email field to required
             emailField.required = true;
-    
-            // Locate the submitButton
-            const submitButton = loginBox.querySelector("button[type='submit']");
-            
-            // Create container for the captcha widget
+
             const captchaContainer = document.createElement('p');
             captchaContainer.innerHTML = `
                 [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']" pcStyle="width: 260px; text-transform: none; font-weight: normal;"}]
             `;
-    
-            // Insert container with widget before the submit button
+
             submitButton.parentNode.insertBefore(captchaContainer, submitButton);
 
         })();
