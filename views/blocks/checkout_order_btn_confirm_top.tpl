@@ -20,7 +20,7 @@
     </div>
 
 [{elseif $oTheme->getActiveThemeId() == "flow"}]
-    FLOW THEME
+    [{* Flow Theme uses checkout_order_btn_submit_bottom block *}]
 [{elseif $oTheme->getActiveThemeId() == "wave"}]
     WAVE THEME
 [{else}]

@@ -3,12 +3,16 @@
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
 [{assign var="oTheme" value="oxTheme"|@oxNew}]
 
-[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('LOGIN') }]
+<script>
+    const powerCaptchaValidationMessage = "[{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]";
+</script>
 
+[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('LOGIN') }]
+    
     [{if $oTheme->getActiveThemeId() == "azure"}]
 
         [{capture assign="loginAccountPowerCaptchaJS"}]
-            [{* Inserts POWER CAPTCHA to form/login_account.tpl *}]
+            [{* Inserts POWER CAPTCHA to form/login_account.tpl when Azure Theme is active *}]
             (function () {
                 const loginForm = document.querySelector(".accountLoginView form[name='login']");
                 if(!loginForm) {
@@ -23,7 +27,7 @@
                     [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']"}]
                     <div class="pc-invalid-message [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
                         <p class="oxValidateError" style="padding-left: 0px">
-                            <span style="display: inline;">[{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]</span>
+                            <span style="display: inline;">${powerCaptchaValidationMessage}</span>
                         </p>
                     </div>
                 `;
@@ -35,7 +39,34 @@
         [{oxscript add=$loginAccountPowerCaptchaJS priority=10}]
 
     [{elseif $oTheme->getActiveThemeId() == "flow"}]
-        FLOW THEME
+
+        [{capture assign="loginAccountPowerCaptchaJS"}]
+            [{* Inserts POWER CAPTCHA to form/login_account.tpl when Flow Theme is active *}]
+            (function () {
+                const loginForm = document.querySelector(".panel form[name='login']");
+                if(!loginForm) {
+                    return; //form not found
+                }
+
+                const emailField = loginForm.querySelector("input[name='lgn_usr']");
+                const captchaTarget = loginForm.querySelector("button[type='submit']").parentNode.parentNode;
+
+                const captchaContainer = document.createElement('div');
+                captchaContainer.innerHTML = `
+                    <div class="col-lg-offset-2 col-lg-10 [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
+                        [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']" pcCssClass=""}]
+                        <div class="help-block pc-invalid-message"></div>
+                    </div>
+                `;
+
+                captchaContainer.classList.add('form-group');
+
+                captchaTarget.parentNode.insertBefore(captchaContainer, captchaTarget);
+            })();
+        [{/capture}]
+
+        [{oxscript add=$loginAccountPowerCaptchaJS priority=10}]
+
     [{elseif $oTheme->getActiveThemeId() == "wave"}]
         WAVE THEME
     [{else}]
@@ -62,7 +93,7 @@
                         [{include file='poca_widget.tpl' powerCaptchaSection='FORGOTPWD' pcUserInputField="input[name='lgn_usr']"}]
                         <div class="pc-invalid-message [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
                             <p class="oxValidateError" style="padding-left: 0px">
-                                <span style="display: inline;">[{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]</span>
+                                <span style="display: inline;">${powerCaptchaValidationMessage}</span>
                             </p>
                         </div>
                     `;
@@ -107,7 +138,7 @@
                             [{include file='poca_widget.tpl' powerCaptchaSection='NEWSLETTER' pcUserInputField="input[name='editval[oxuser__oxusername]']"}]
                             <div class="pc-invalid-message [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
                                 <p class="oxValidateError" style="padding-left: 0px">
-                                    <span style="display: inline;">[{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]</span>
+                                    <span style="display: inline;">${powerCaptchaValidationMessage}</span>
                                 </p>
                             </div>
                         `;

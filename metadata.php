@@ -45,7 +45,7 @@ $aModule = [
         'poca_error_message.tpl'    => 'poca/power-captcha/views/tpl/poca_error_message.tpl',
     ],
     'blocks'      => [
-        // REGISTER Section (Azure)
+        // REGISTER Section (Azure, Flow)
         [
             'template' => 'form/fieldset/user_account.tpl',
             'block'    => 'user_account_newsletter',
@@ -67,7 +67,13 @@ $aModule = [
             'block'    => 'checkout_order_btn_confirm_top',
             'file'     => 'views/blocks/checkout_order_btn_confirm_top.tpl',
         ],
-        // LOGIN Section (Azure)
+        // CHECKOUT Section (Flow)
+        [
+            'template' => 'page/checkout/order.tpl',
+            'block'    => 'checkout_order_btn_submit_bottom',
+            'file'     => 'views/blocks/checkout_order_btn_submit_bottom.tpl',
+        ],
+        // LOGIN Section (Azure, Flow)
         [
             'template' => 'widget/header/loginbox.tpl',
             'block'    => 'thirdparty_login',
@@ -78,19 +84,31 @@ $aModule = [
             'block'    => 'checkout_options_login',
             'file'     => 'views/blocks/checkout_options_login.tpl',
         ],
-        // PRICEALARM Section
+        // PRICEALARM Section (Azure, Flow)
         [
             'template' => 'form/pricealarm.tpl',
             'block'    => 'captcha_form',
             'file'     => 'views/blocks/captcha_form_pricealarm.tpl',
         ],
-        // CONTACT Section
+        // CONTACT Section (Azure, Flow)
         [
             'template' => 'form/contact.tpl',
             'block'    => 'captcha_form',
             'file'     => 'views/blocks/captcha_form_contact.tpl',
         ],
-        // Azure LOGIN, FORGOTPWD, NEWSLETTER Section
+        // NEWSLETTER Section (Flow)
+        [
+            'template' => 'form/newsletter.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/blocks/captcha_form_newsletter.tpl',
+        ],
+        // FORGOTPWD Section (Flow)
+        [
+            'template' => 'form/forgotpwd_email.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/blocks/captcha_form_forgotpwd.tpl',
+        ],
+        // LOGIN Section (Azure, Flow); FORGOTPWD, NEWSLETTER Section (Azure)
         [
             'template' => 'layout/base.tpl',
             'block'    => 'base_js',

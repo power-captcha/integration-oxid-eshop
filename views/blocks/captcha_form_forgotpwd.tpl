@@ -1,0 +1,25 @@
+[{$smarty.block.parent}]
+
+[{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
+[{assign var="oTheme" value="oxTheme"|@oxNew}]
+
+[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('FORGOTPWD') }]
+
+    [{if $oTheme->getActiveThemeId() == "azure"}]
+        [{* Azure Theme uses javascript to include captcha (base_js.tpl) *}]
+    [{elseif $oTheme->getActiveThemeId() == "flow"}]
+
+        <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
+            <div class="col-md-9 col-md-offset-3">
+                [{include file='poca_widget.tpl' powerCaptchaSection='FORGOTPWD' pcUserInputField="input[name='lgn_usr']"}]
+                <div class="help-block pc-invalid-message"></div>
+            </div>
+        </div>
+
+    [{elseif $oTheme->getActiveThemeId() == "wave"}]
+        WAVE THEME
+    [{else}]
+        UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
+    [{/if}]
+
+[{/if}]

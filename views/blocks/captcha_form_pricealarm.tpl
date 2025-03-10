@@ -17,7 +17,14 @@
         </li>
 
     [{elseif $oTheme->getActiveThemeId() == "flow"}]
-        FLOW THEME
+
+        <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
+            <div class="col-lg-9 col-lg-offset-3">
+                [{include file='poca_widget.tpl' powerCaptchaSection='WISHEDPRICE' pcUserInputField="input[name='pa[email]']"}]
+                <div class="help-block pc-invalid-message"></div>
+            </div>
+        </div>
+        
     [{elseif $oTheme->getActiveThemeId() == "wave"}]
         WAVE THEME
     [{else}]

@@ -12,7 +12,7 @@
 
             // Find the checkout login form
             const loginForm = document.querySelector("#optionLogin");
-            const emailField = loginBox.querySelector("input[name='lgn_usr']");
+            const emailField = loginForm.querySelector("input[name='lgn_usr']");
 
             if(!loginForm || !emailField) {
                 return; //form not found
@@ -50,7 +50,38 @@
 
 
 [{elseif $oTheme->getActiveThemeId() == "flow"}]
-    FLOW THEME
+
+    [{capture assign="loginCheckoutPowerCaptchaJS"}]
+        [{* Inserts POWER CAPTCHA to form/login.tpl when Flow Theme is active *}]
+        (function () {
+
+            const loginForm = document.querySelector(".checkoutOptions form[name='login']");
+            if(!loginForm) {
+                return;
+            }
+
+            const emailField = loginForm.querySelector("input[name='lgn_usr']");
+            const captchaTarget = loginForm.querySelector("#optionLogin .panel-body");
+            
+            // Create container for the captcha widget
+            const captchaContainer = document.createElement('div');
+            captchaContainer.innerHTML = `
+                <div class="[{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
+                    [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']" pcCssClass=""}]
+                    <div class="help-block pc-invalid-message"></div>
+                </div>
+            `;
+
+            emailField.required = true;
+            captchaContainer.classList.add('form-group');
+
+            captchaTarget.append(captchaContainer);
+
+        })();
+    [{/capture}]
+
+    [{oxscript add=$loginCheckoutPowerCaptchaJS priority=10}]
+    
 [{elseif $oTheme->getActiveThemeId() == "wave"}]
     WAVE THEME
 [{else}]

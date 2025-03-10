@@ -3,7 +3,7 @@
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
 [{assign var="oTheme" value="oxTheme"|@oxNew}]
 
-[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('WISHEDPRICE') }]
+[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('CONTACT') }]
 
     [{if $oTheme->getActiveThemeId() == "azure"}]
 
@@ -17,11 +17,11 @@
         </li>
 
     [{elseif $oTheme->getActiveThemeId() == "flow"}]
-        FLOW THEME // TODO
 
-        <div class="form-group [{if $Errors.powerCaptchaErrors}]has-error[{/if}]">
+        <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
             <div class="col-lg-offset-2 col-lg-10">
-                [{include file='poca_widget_base.tpl' powerCaptchaSection='CONTACT' pcUserInputField="input[name='editval[oxuser__oxusername]']"}]
+                [{include file='poca_widget.tpl' powerCaptchaSection='CONTACT' pcUserInputField="input[name='editval[oxuser__oxusername]']"}]
+                <div class="help-block pc-invalid-message"></div>
             </div>
         </div>
 

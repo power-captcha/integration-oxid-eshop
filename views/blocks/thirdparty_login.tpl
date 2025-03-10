@@ -34,9 +34,33 @@
 
     [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
 
-
 [{elseif $oTheme->getActiveThemeId() == "flow"}]
-    FLOW THEME
+
+    [{capture assign="loginBoxPowerCaptchaJS"}]
+        (function () {
+            const loginBox = document.querySelector("#loginBox");
+            if(!loginBox) {
+                return; //form not found
+            }
+
+            const emailField = loginBox.querySelector("input[name='lgn_usr']");
+            const submitButton = loginBox.querySelector("button[type='submit']");
+            
+            const captchaContainer = document.createElement('div');
+            captchaContainer.innerHTML = `
+            [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']" pcStyle="width: 260px; text-transform: none; font-weight: normal;"}]
+            `;
+            
+            captchaContainer.classList.add('form-group');
+            emailField.required = true;
+
+            submitButton.parentNode.insertBefore(captchaContainer, submitButton);
+
+        })();
+    [{/capture}]
+
+    [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
+
 [{elseif $oTheme->getActiveThemeId() == "wave"}]
     WAVE THEME
 [{else}]
