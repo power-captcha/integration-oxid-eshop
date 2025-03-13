@@ -28,7 +28,14 @@
     </div>
 
 [{elseif $oTheme->getActiveThemeId() == "wave"}]
-    WAVE THEME
+
+    <div class="form-group row [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
+        <div class="col-lg-9 offset-lg-3">
+            [{include file='poca_widget.tpl' powerCaptchaSection='REGISTER' pcUserInputField="input[name='lgn_usr']"}]
+            <div class="help-block pc-invalid-message"></div>
+        </div>
+    </div>
+    
 [{else}]
     UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
 [{/if}]

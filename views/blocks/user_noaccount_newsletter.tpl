@@ -19,7 +19,7 @@
     </li>
 
 [{elseif $oTheme->getActiveThemeId() == "flow"}]
-
+    [{* TODO : Noch mal testen, brauche ich hier ein form-group? in flow form/fieldset/user_noaccount.tpl gibt es bereits form-group *}]
     <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
         <div class="col-lg-9 col-lg-offset-3">
             [{include file='poca_widget.tpl' powerCaptchaSection='REGISTER' pcUserInputField="input[name='lgn_usr']"}]
@@ -28,7 +28,12 @@
     </div>
 
 [{elseif $oTheme->getActiveThemeId() == "wave"}]
-    WAVE THEME
+
+    <div class="col-lg-9 offset-lg-3">
+        [{include file='poca_widget.tpl' powerCaptchaSection='REGISTER' pcUserInputField="input[name='lgn_usr']"}]
+        <div class="help-block pc-invalid-message"></div>
+    </div>
+
 [{else}]
     UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
 [{/if}]

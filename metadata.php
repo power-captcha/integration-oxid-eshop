@@ -45,7 +45,7 @@ $aModule = [
         'poca_error_message.tpl'    => 'poca/power-captcha/views/tpl/poca_error_message.tpl',
     ],
     'blocks'      => [
-        // REGISTER Section (Azure, Flow)
+        // REGISTER Section (Azure, Flow, Wave)
         [
             'template' => 'form/fieldset/user_account.tpl',
             'block'    => 'user_account_newsletter',
@@ -67,42 +67,55 @@ $aModule = [
             'block'    => 'checkout_order_btn_confirm_top',
             'file'     => 'views/blocks/checkout_order_btn_confirm_top.tpl',
         ],
-        // CHECKOUT Section (Flow)
+        // CHECKOUT Section (Flow, Wave)
         [
             'template' => 'page/checkout/order.tpl',
             'block'    => 'checkout_order_btn_submit_bottom',
             'file'     => 'views/blocks/checkout_order_btn_submit_bottom.tpl',
         ],
-        // LOGIN Section (Azure, Flow)
+        // LOGIN Section (Azure, Flow, Wave) via Javascript (Loginbox)
         [
             'template' => 'widget/header/loginbox.tpl',
             'block'    => 'thirdparty_login',
             'file'     => 'views/blocks/thirdparty_login.tpl',
         ],
+        // LOGIN Section (Azure, Flow) via Javascript (Login Form in checkout)
         [
             'template' => 'page/checkout/inc/options.tpl',
             'block'    => 'checkout_options_login',
             'file'     => 'views/blocks/checkout_options_login.tpl',
         ],
-        // PRICEALARM Section (Azure, Flow)
+        // LOGIN Section (Wave) (Login Form in checkout)
+        [
+            'template' => 'form/login.tpl',
+            'block'    => 'checkout_options_login_passwordfield',
+            'file'     => 'views/blocks/checkout_options_login_passwordfield.tpl',
+        ],
+        // LOGIN Section (Wave) (Login Form in account page)
+        [
+            'template' => 'form/login_account.tpl',
+            'block'    => 'checkout_options_loginaccount_submitbutton',
+            'file'     => 'views/blocks/checkout_options_loginaccount_submitbutton.tpl',
+        ],
+        // PRICEALARM Section (Azure, Flow, Wave)
         [
             'template' => 'form/pricealarm.tpl',
             'block'    => 'captcha_form',
             'file'     => 'views/blocks/captcha_form_pricealarm.tpl',
         ],
-        // CONTACT Section (Azure, Flow)
+        // CONTACT Section (Azure, Flow, Wave)
         [
             'template' => 'form/contact.tpl',
             'block'    => 'captcha_form',
             'file'     => 'views/blocks/captcha_form_contact.tpl',
         ],
-        // NEWSLETTER Section (Flow)
+        // NEWSLETTER Section (Flow, Wave)
         [
             'template' => 'form/newsletter.tpl',
             'block'    => 'captcha_form',
             'file'     => 'views/blocks/captcha_form_newsletter.tpl',
         ],
-        // FORGOTPWD Section (Flow)
+        // FORGOTPWD Section (Flow, Wave)
         [
             'template' => 'form/forgotpwd_email.tpl',
             'block'    => 'captcha_form',

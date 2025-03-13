@@ -83,7 +83,7 @@
     [{oxscript add=$loginCheckoutPowerCaptchaJS priority=10}]
     
 [{elseif $oTheme->getActiveThemeId() == "wave"}]
-    WAVE THEME
+    [{* Wave theme uses the block checkout_options_login_passwordfield to display the captcha on Login Form durig checkout *}]
 [{else}]
     UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
 [{/if}]

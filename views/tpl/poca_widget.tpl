@@ -6,12 +6,10 @@
     [{oxstyle include=$oViewConf->getModuleUrl("power_captcha", "out/src/css/power-captcha-oxid.css")}] 
     [{if $oTheme->getActiveThemeId() == "azure"}]
         [{oxscript include=$oViewConf->getModuleUrl("power_captcha", "out/src/js/power-captcha-validation-azure.js")}]
-    [{elseif $oTheme->getActiveThemeId() == "flow"}]
-        [{oxscript include=$oViewConf->getModuleUrl("power_captcha", "out/src/js/power-captcha-validation-flow.js")}] 
-    [{elseif $oTheme->getActiveThemeId() == "wave"}]
-        // TODO
+    [{else}]
+        [{oxscript include=$oViewConf->getModuleUrl("power_captcha", "out/src/js/power-captcha-validation.js")}] 
     [{/if}]
-    
+
     [{block name="power_captcha_widget"}]
         <div data-pc-api-key="[{$powerCaptcha->getApiKey()}]" 
             data-pc-client-uid="[{$powerCaptcha->getClientUid()}]"
