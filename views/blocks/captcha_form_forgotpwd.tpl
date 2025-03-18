@@ -1,13 +1,12 @@
 [{$smarty.block.parent}]
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('FORGOTPWD') }]
 
-    [{if $oTheme->getActiveThemeId() == "azure"}]
+    [{if $powerCaptcha->isThemeActive('azure')}]
         [{* Azure Theme uses javascript to include captcha (base_js.tpl) *}]
-    [{elseif $oTheme->getActiveThemeId() == "flow"}]
+    [{elseif $powerCaptcha->isThemeActive('flow')}]
 
         <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
             <div class="col-md-9 col-md-offset-3">
@@ -16,7 +15,7 @@
             </div>
         </div>
 
-    [{elseif $oTheme->getActiveThemeId() == "wave"}]
+    [{elseif $powerCaptcha->isThemeActive('wave')}]
 
         <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
             [{include file='poca_widget.tpl' powerCaptchaSection='FORGOTPWD' pcUserInputField="input[name='lgn_usr']"}]

@@ -1,11 +1,10 @@
 [{$smarty.block.parent}]
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('WISHEDPRICE') }]
 
-    [{if $oTheme->getActiveThemeId() == "azure"}]
+    [{if $powerCaptcha->isThemeActive('azure')}]
 
         <li>
             [{include file='poca_widget.tpl' powerCaptchaSection='WISHEDPRICE' pcUserInputField="input[name='pa[email]']"}]
@@ -16,7 +15,7 @@
             </div>
         </li>
 
-    [{elseif $oTheme->getActiveThemeId() == "flow"}]
+    [{elseif $powerCaptcha->isThemeActive('flow')}]
 
         <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
             <div class="col-lg-9 col-lg-offset-3">
@@ -25,7 +24,7 @@
             </div>
         </div>
         
-    [{elseif $oTheme->getActiveThemeId() == "wave"}]
+    [{elseif $powerCaptcha->isThemeActive('wave')}]
 
         <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
             <div class="col-lg-9 offset-lg-3">
@@ -35,7 +34,9 @@
         </div>
 
     [{else}]
-        UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
+        
+        [{include file='poca_widget.tpl' powerCaptchaSection='WISHEDPRICE' pcUserInputField="input[name='pa[email]']"}]
+
     [{/if}]
 
 [{/if}]

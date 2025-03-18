@@ -4,7 +4,7 @@
 
     [{oxscript include=$powerCaptcha->getJavaScriptUrl()}]
     [{oxstyle include=$oViewConf->getModuleUrl("power_captcha", "out/src/css/power-captcha-oxid.css")}] 
-    [{if $oTheme->getActiveThemeId() == "azure"}]
+    [{if $powerCaptcha->isThemeActive('azure')}]
         [{oxscript include=$oViewConf->getModuleUrl("power_captcha", "out/src/js/power-captcha-validation-azure.js")}]
     [{else}]
         [{oxscript include=$oViewConf->getModuleUrl("power_captcha", "out/src/js/power-captcha-validation.js")}] 

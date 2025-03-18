@@ -1,11 +1,10 @@
 [{$smarty.block.parent}]
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('REGISTER') }]
 
-[{if $oTheme->getActiveThemeId() == "azure"}]
+[{if $powerCaptcha->isThemeActive('azure')}]
 
     </li>
     <li>
@@ -18,7 +17,7 @@
         </div>
     </li>
 
-[{elseif $oTheme->getActiveThemeId() == "flow"}]
+[{elseif $powerCaptcha->isThemeActive('flow')}]
     [{* TODO : Noch mal testen, brauche ich hier ein form-group? in flow form/fieldset/user_noaccount.tpl gibt es bereits form-group *}]
     <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
         <div class="col-lg-9 col-lg-offset-3">
@@ -27,7 +26,7 @@
         </div>
     </div>
 
-[{elseif $oTheme->getActiveThemeId() == "wave"}]
+[{elseif $powerCaptcha->isThemeActive('wave')}]
 
     <div class="col-lg-9 offset-lg-3">
         [{include file='poca_widget.tpl' powerCaptchaSection='REGISTER' pcUserInputField="input[name='lgn_usr']"}]

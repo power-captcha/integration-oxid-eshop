@@ -1,7 +1,6 @@
 [{$smarty.block.parent}]
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 <script>
     const powerCaptchaValidationMessage = "[{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]";
@@ -9,7 +8,7 @@
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('LOGIN') }]
     
-    [{if $oTheme->getActiveThemeId() == "azure"}]
+    [{if $powerCaptcha->isThemeActive('azure')}]
 
         [{capture assign="loginAccountPowerCaptchaJS"}]
             [{* Inserts POWER CAPTCHA to form/login_account.tpl when Azure Theme is active *}]
@@ -38,7 +37,7 @@
 
         [{oxscript add=$loginAccountPowerCaptchaJS priority=10}]
 
-    [{elseif $oTheme->getActiveThemeId() == "flow"}]
+    [{elseif $powerCaptcha->isThemeActive('flow')}]
 
         [{capture assign="loginAccountPowerCaptchaJS"}]
             [{* Inserts POWER CAPTCHA to form/login_account.tpl when Flow Theme is active *}]
@@ -67,7 +66,7 @@
 
         [{oxscript add=$loginAccountPowerCaptchaJS priority=10}]
 
-    [{elseif $oTheme->getActiveThemeId() == "wave"}]
+    [{elseif $powerCaptcha->isThemeActive('wave')}]
         WAVE THEME
     [{else}]
         UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
@@ -79,7 +78,7 @@
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('FORGOTPWD') }]
 
-    [{if $oTheme->getActiveThemeId() == "azure"}]
+    [{if $powerCaptcha->isThemeActive('azure')}]
 
         [{capture assign="forgotPwdPowerCaptchaJS"}]
             [{* Inserts POWER CAPTCHA to form/forgotpwd_email.tpl *}]
@@ -105,9 +104,9 @@
 
         [{oxscript add=$forgotPwdPowerCaptchaJS priority=10}]
 
-    [{elseif $oTheme->getActiveThemeId() == "flow"}]
+    [{elseif $powerCaptcha->isThemeActive('flow')}]
         FLOW THEME
-    [{elseif $oTheme->getActiveThemeId() == "wave"}]
+    [{elseif $powerCaptcha->isThemeActive('wave')}]
         WAVE THEME
     [{else}]
         UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
@@ -119,7 +118,7 @@
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('NEWSLETTER') }]
 
-    [{if $oTheme->getActiveThemeId() == "azure"}]
+    [{if $powerCaptcha->isThemeActive('azure')}]
 
         [{capture assign="newsletterPowerCaptchaJS"}]
             [{* Inserts POWER CAPTCHA to form/newsletter.tpl on Azure Theme *}]

@@ -3,13 +3,12 @@
 [{$smarty.block.parent}]
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('LOGIN') }]
 
     [{* Azure and Flow theme are using the block checkout_options_login (see blocks/checkout_options_login.tpl) to display the captcha in form/login.tpl *}]
 
-    [{if $oTheme->getActiveThemeId() == "wave"}]
+    [{if $powerCaptcha->isThemeActive('wave')}]
 
         <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
             [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']"}]

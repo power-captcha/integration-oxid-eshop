@@ -1,13 +1,12 @@
 
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('CHECKOUT') }]
 
-[{if $oTheme->getActiveThemeId() == "azure"}]
+[{if $powerCaptcha->isThemeActive('azure')}]
     [{* Azure Theme uses checkout_order_btn_confirm_bottom and checkout_order_btn_confirm_top blocks *}]
-[{elseif $oTheme->getActiveThemeId() == "flow"}]
+[{elseif $powerCaptcha->isThemeActive('flow')}]
 
     <div class="pull-right">
         [{include file='poca_widget.tpl' powerCaptchaSection='CHECKOUT' pcCssClass=""}]
@@ -17,7 +16,7 @@
 
     [{$smarty.block.parent}]
 
-[{elseif $oTheme->getActiveThemeId() == "wave"}]
+[{elseif $powerCaptcha->isThemeActive('wave')}]
 
     <div class="float-right">
         [{include file='poca_widget.tpl' powerCaptchaSection='CHECKOUT' pcCssClass="mb-3"}]

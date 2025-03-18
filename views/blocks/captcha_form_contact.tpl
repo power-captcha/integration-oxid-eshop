@@ -1,11 +1,10 @@
 [{$smarty.block.parent}]
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('CONTACT') }]
 
-    [{if $oTheme->getActiveThemeId() == "azure"}]
+    [{if $powerCaptcha->isThemeActive('azure')}]
 
         <li>
             [{include file='poca_widget.tpl' powerCaptchaSection='CONTACT' pcUserInputField="input[name='editval[oxuser__oxusername]']"}]
@@ -16,7 +15,7 @@
             </div>
         </li>
 
-    [{elseif $oTheme->getActiveThemeId() == "flow"}]
+    [{elseif $powerCaptcha->isThemeActive('flow')}]
 
         <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
             <div class="col-lg-offset-2 col-lg-10">
@@ -25,7 +24,7 @@
             </div>
         </div>
 
-    [{elseif $oTheme->getActiveThemeId() == "wave"}]
+    [{elseif $powerCaptcha->isThemeActive('wave')}]
 
         <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
             <div class="col-lg-10 offset-lg-2">

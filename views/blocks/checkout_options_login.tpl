@@ -1,11 +1,10 @@
 [{$smarty.block.parent}]
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('LOGIN') }]
 
-[{if $oTheme->getActiveThemeId() == "azure"}]
+[{if $powerCaptcha->isThemeActive('azure')}]
 
     [{capture assign="loginCheckoutPowerCaptchaJS"}]
         (function () {
@@ -49,7 +48,7 @@
     [{oxscript add=$loginCheckoutPowerCaptchaJS priority=10}]
 
 
-[{elseif $oTheme->getActiveThemeId() == "flow"}]
+[{elseif $powerCaptcha->isThemeActive('flow')}]
 
     [{capture assign="loginCheckoutPowerCaptchaJS"}]
         [{* Inserts POWER CAPTCHA to form/login.tpl when Flow Theme is active *}]
@@ -82,7 +81,7 @@
 
     [{oxscript add=$loginCheckoutPowerCaptchaJS priority=10}]
     
-[{elseif $oTheme->getActiveThemeId() == "wave"}]
+[{elseif $powerCaptcha->isThemeActive('wave')}]
     [{* Wave theme uses the block checkout_options_login_passwordfield to display the captcha on Login Form durig checkout *}]
 [{else}]
     UNKOWN THEME: [{$oTheme->getActiveThemeId()}]

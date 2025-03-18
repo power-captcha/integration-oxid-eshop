@@ -13,6 +13,9 @@ use PowerCaptcha\OxidEshop\Module;
  */
 class ModuleSettings implements ModuleSettingsInterface
 {
+
+    private $_themeList = null;
+
     public function __construct(
         // private ModuleSettingServiceInterface $moduleSettingService // does not exist in 6.5
         private ModuleSettingBridgeInterface $moduleSettingService
@@ -44,6 +47,16 @@ class ModuleSettings implements ModuleSettingsInterface
             default:
                 return true;
         }
+    }
+
+    public function isThemeActive(string $themeName): bool
+    {
+        if($this->_themeList === null) {
+            $oTheme = oxNew(\OxidEsales\Eshop\Core\Theme::class);
+            $this->_themeList = $oTheme->getActiveThemesList();
+        }
+
+        return in_array($themeName, $this->_themeList);
     }
 
     public function getApiKey(): string

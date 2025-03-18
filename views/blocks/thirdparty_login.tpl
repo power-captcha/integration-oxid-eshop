@@ -1,11 +1,10 @@
 [{$smarty.block.parent}]
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
-[{assign var="oTheme" value="oxTheme"|@oxNew}]
 
 [{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('LOGIN') }]
 
-[{if $oTheme->getActiveThemeId() == "azure"}]
+[{if $powerCaptcha->isThemeActive('azure')}]
 
     [{capture assign="loginBoxPowerCaptchaJS"}]
         (function () {
@@ -34,7 +33,7 @@
 
     [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
 
-[{elseif $oTheme->getActiveThemeId() == "flow"}]
+[{elseif $powerCaptcha->isThemeActive('flow')}]
 
     [{capture assign="loginBoxPowerCaptchaJS"}]
         (function () {
@@ -63,7 +62,7 @@
 
     [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
 
-[{elseif $oTheme->getActiveThemeId() == "wave"}]
+[{elseif $powerCaptcha->isThemeActive('wave')}]
 
     [{capture assign="loginBoxPowerCaptchaJS"}]
         (function () {
