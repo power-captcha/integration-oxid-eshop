@@ -1,3 +1,12 @@
 :root {
     --pc-modal-z-index: 10010;
 }
+
+.pc-invalid-message {
+    display: none !important;
+}
+
+
+.pc-invalid-message.pc-show-message {
+    display: block !important;
+}

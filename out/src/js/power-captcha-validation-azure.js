@@ -18,11 +18,17 @@ document.addEventListener('PowerCaptchaReady', (e) => {
             pc.widgetContainer.scrollIntoView({block: "center"});
 
             // show validation message
-            invalidMessage?.classList.add('oxInValid');
+            if(invalidMessage) {
+                invalidMessage.classList.add('oxInValid');
+                invalidMessage.classList.add('pc-show-message');
+            }
         } else if(e.detail == 'success') {
 
             // hide validation message
-            invalidMessage?.classList.remove('oxInValid');
+            if(invalidMessage) {
+                invalidMessage.classList.remove('oxInValid');
+                invalidMessage.classList.remove('pc-show-message');
+            }
         }
     });
 

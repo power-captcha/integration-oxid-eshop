@@ -21,10 +21,12 @@ document.addEventListener('PowerCaptchaReady', (e) => {
                 invalidMessage.innerHTML = `
                     <ul class="list-unstyled text-danger" role="alert"><li>${powerCaptchaValidationMessage}</li></ul>
                 `;
+                invalidMessage.classList.add('pc-show-message');
             }
         } else if(e.detail == 'success') {
             if(invalidMessage) {
                 invalidMessage.innerHTML = ``;
+                invalidMessage.classList.remove('pc-show-message');
             }
         }
     });
