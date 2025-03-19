@@ -2,7 +2,7 @@
 
 [{if $powerCaptcha->isDisplayCaptcha('LOGIN') }]
 
-    [{* Integrates POWER CAPTCHA to Login Form during Checkout (form/login.tpl ) *}
+    [{* Integrates POWER CAPTCHA to Login Form during Checkout (form/login.tpl ) *}]
 
     [{* The Azure and Flow themes instead use JavaScript in the checkout_options_login block to integrate the captcha into form/login.tpl. *}]
     [{* This is because Azure and Flow do not contain a checkout_options_login_passwordfield block in form/login.tpl. *}]

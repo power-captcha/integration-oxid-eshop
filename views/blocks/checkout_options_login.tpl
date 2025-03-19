@@ -2,7 +2,7 @@
 
 [{if $powerCaptcha->isDisplayCaptcha('LOGIN') }]
 
-    [{* Integrates POWER CAPTCHA to Login Form during Checkout (form/login.tpl ) *}
+    [{* Integrates POWER CAPTCHA to Login Form during Checkout (form/login.tpl) *}]
 
     [{if $powerCaptcha->isThemeActive('azure')}]
 
