@@ -6,12 +6,13 @@
     const powerCaptchaValidationMessage = "[{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]";
 </script>
 
-[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('LOGIN') }]
+[{if $powerCaptcha->isDisplayCaptcha('LOGIN') }]
     
+    [{* Integrates POWER CAPTCHA to Login Account Form (form/login_account.tpl) *}]
+
     [{if $powerCaptcha->isThemeActive('azure')}]
 
         [{capture assign="loginAccountPowerCaptchaJS"}]
-            [{* Inserts POWER CAPTCHA to form/login_account.tpl when Azure Theme is active *}]
             (function () {
                 const loginForm = document.querySelector(".accountLoginView form[name='login']");
                 if(!loginForm) {
@@ -40,7 +41,6 @@
     [{elseif $powerCaptcha->isThemeActive('flow')}]
 
         [{capture assign="loginAccountPowerCaptchaJS"}]
-            [{* Inserts POWER CAPTCHA to form/login_account.tpl when Flow Theme is active *}]
             (function () {
                 const loginForm = document.querySelector(".panel form[name='login']");
                 if(!loginForm) {
@@ -66,22 +66,24 @@
 
         [{oxscript add=$loginAccountPowerCaptchaJS priority=10}]
 
-    [{elseif $powerCaptcha->isThemeActive('wave')}]
-        WAVE THEME
     [{else}]
-        UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
+
+        [{* The Wave theme instead uses the checkout_options_loginaccount_submitbutton block to integrate the captcha into form/login_account.tpl. *}]
+        [{* Other themes also need to implement the checkout_options_loginaccount_submitbutton block in form/login_account.tpl, similar to the Wave theme. *}]
+        
     [{/if}]
 
 [{/if}]
 
 [{* --------------------------------------------------------------------------------- *}]
 
-[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('FORGOTPWD') }]
+[{if $powerCaptcha->isDisplayCaptcha('FORGOTPWD') }]
+
+    [{* Integrates POWER CAPTCHA to Forgot Password Form (form/forgotpwd_email.tpl) *}]
 
     [{if $powerCaptcha->isThemeActive('azure')}]
 
         [{capture assign="forgotPwdPowerCaptchaJS"}]
-            [{* Inserts POWER CAPTCHA to form/forgotpwd_email.tpl *}]
             (function () {
                 document.querySelectorAll("form[name='forgotpwd']").forEach((forgtPwdForm) => {
                     const emailField = forgtPwdForm.querySelector("input[name='lgn_usr']");
@@ -104,24 +106,22 @@
 
         [{oxscript add=$forgotPwdPowerCaptchaJS priority=10}]
 
-    [{elseif $powerCaptcha->isThemeActive('flow')}]
-        FLOW THEME
-    [{elseif $powerCaptcha->isThemeActive('wave')}]
-        WAVE THEME
     [{else}]
-        UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
+        [{* The Wave and Flow themes instead use the captcha_form block (see captcha_form_forgotpwd.tpl) to integrate the captcha into form/forgotpwd_email.tpl. *}]
+        [{* Other themes also need to implement the captcha_form block in form/forgotpwd_email.tpl, similar to the Wave and Flow themes. *}]
     [{/if}]
 
 [{/if}]
 
 [{* --------------------------------------------------------------------------------- *}]
 
-[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('NEWSLETTER') }]
+[{if $powerCaptcha->isDisplayCaptcha('NEWSLETTER') }]
+
+    [{* Integrates POWER CAPTCHA to Newsletter Form (form/newsletter.tpl) *}]
 
     [{if $powerCaptcha->isThemeActive('azure')}]
 
         [{capture assign="newsletterPowerCaptchaJS"}]
-            [{* Inserts POWER CAPTCHA to form/newsletter.tpl on Azure Theme *}]
             (function () {
                 document.querySelectorAll("form").forEach((newsletterForm) => {
                         if(!newsletterForm.querySelector("input[name='cl'][value='newsletter']") 
@@ -148,41 +148,9 @@
         [{/capture}]
 
         [{oxscript add=$newsletterPowerCaptchaJS priority=10}]
-
+    [{else}]
+        [{* The Wave and Flow themes instead use the captcha_form block (see captcha_form_newsletter.tpl) to integrate the captcha into form/newsletter.tpl. *}]
+        [{* Other themes also need to implement the captcha_form block in form/newsletter.tpl, similar to the Wave and Flow themes. *}]
     [{/if}]
 
 [{/if}]
-
-[{*
-[{capture assign="registerCaptchaJS"}]
-    (function () {
-
-        // Find the login form
-        const registerForms = document.querySelectorAll("form[name='order']");
-
-        registerForms.forEach((registerForm) => {
-            const emailField = registerForm.querySelector("input[name='lgn_usr']");
-
-            if(!registerForm || !emailField) {
-                return; //form not found
-            }
-    
-            // Set email field to required
-            emailField.required = true;
-    
-            // Locate the submit button
-            const submitButton = registerForm.querySelector("button[type='submit']");
-            
-            // Create container for the captcha widget
-            const captchaContainer = document.createElement('div');
-            captchaContainer.style.marginBottom = '15px';
-            captchaContainer.innerHTML = `
-                [{include file='poca_widget_base.tpl' powerCaptchaSection='REGISTER' pcUserInputField="input[name='lgn_usr']"}]
-            `;
-    
-            // Insert container with widget before the submit button
-            submitButton.parentNode.insertBefore(captchaContainer, submitButton);
-        });
-    })();
-[{/capture}]
- *}]

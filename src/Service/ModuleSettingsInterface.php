@@ -10,6 +10,8 @@ interface ModuleSettingsInterface
 
     public function isProtectionEnabled(string|null $section): bool;
 
+    public function isDisplayCaptcha(string|null $section): bool;
+
     public function isThemeActive(string $themeName): bool;
 
     public function getApiKey(): string;

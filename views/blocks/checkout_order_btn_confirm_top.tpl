@@ -1,29 +1,31 @@
-[{$smarty.block.parent}]
-
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
 
-[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('CHECKOUT') }]
+[{if $powerCaptcha->isDisplayCaptcha('CHECKOUT') }]
 
-[{if $powerCaptcha->isThemeActive('azure')}]
+    [{* Integrates POWER CAPTCHA to Checkout Order Form (page/checkout/order.tpl) *}]
 
-    <div style="display: block; clear: both; float: right; margin-top: -25px;">
+    [{if $powerCaptcha->isThemeActive('azure')}]
 
-        [{include file='poca_widget.tpl' powerCaptchaSection='CHECKOUT' pcFormElement="#orderConfirmAgbTop" pcStyle="width: 260px;"}]
-
-        <div class="pc-invalid-message [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
-            <p class="oxValidateError" style="padding-left: 0px">
-                <span style="display: block;">[{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]</span>
-            </p>
+        [{$smarty.block.parent}]
+        <div style="display: block; clear: both; float: right; margin-top: -25px;">
+            [{include file='poca_widget.tpl' pcFormElement="#orderConfirmAgbTop" pcStyle="width: 260px;"}]
+            <div class="pc-invalid-message [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
+                <p class="oxValidateError" style="padding-left: 0px">
+                    <span style="display: block;">[{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]</span>
+                </p>
+            </div>
         </div>
 
-    </div>
+    [{else}]
 
-[{elseif $powerCaptcha->isThemeActive('flow')}]
-    [{* Flow Theme uses checkout_order_btn_submit_bottom block *}]
-[{elseif $powerCaptcha->isThemeActive('wave')}]
-    WAVE THEME
+        [{$smarty.block.parent}]
+        [{* The Flow and Wave themes instead use checkout_order_btn_submit_bottom to integrate the captcha into page/checkout/order.tpl. *}]
+        [{* Other themes also need to implement the checkout_order_btn_submit_bottom block in page/checkout/order.tpl, similar to Flow and Wave. *}]
+    
+    [{/if}]
+
 [{else}]
-    UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
-[{/if}]
+
+    [{$smarty.block.parent}]
 
 [{/if}]

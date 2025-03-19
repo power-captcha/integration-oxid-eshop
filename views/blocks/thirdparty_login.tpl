@@ -2,95 +2,94 @@
 
 [{assign var="powerCaptcha" value=$oViewConf->getPowerCaptchaSettings()}]
 
-[{if $powerCaptcha->isConfigured() && $powerCaptcha->isProtectionEnabled('LOGIN') }]
+[{if $powerCaptcha->isDisplayCaptcha('LOGIN') }]
 
-[{if $powerCaptcha->isThemeActive('azure')}]
+    [{* Integrates POWER CAPTCHA to Login Box Form (widget/header/loginbox.tpl) *}]
 
-    [{capture assign="loginBoxPowerCaptchaJS"}]
-        (function () {
-            const loginBox = document.querySelector("#loginBox");
-            if(!loginBox) {
-                return; //form not found
-            }
+    [{if $powerCaptcha->isThemeActive('azure')}]
 
-            const emailField = loginBox.querySelector("input[name='lgn_usr']");
-            const submitButton = loginBox.querySelector("button[type='submit']");
+        [{capture assign="loginBoxPowerCaptchaJS"}]
+            (function () {
+                const loginBox = document.querySelector("#loginBox");
+                if(!loginBox) {
+                    return; //form not found
+                }
 
-            // Resize login box
-            loginBox.querySelector('.loginForm').style.width = 'auto';
-            // Set email field to required
-            emailField.required = true;
+                const emailField = loginBox.querySelector("input[name='lgn_usr']");
+                const submitButton = loginBox.querySelector("button[type='submit']");
 
-            const captchaContainer = document.createElement('p');
-            captchaContainer.innerHTML = `
-                [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']" pcStyle="width: 260px; text-transform: none; font-weight: normal;"}]
-            `;
+                const captchaContainer = document.createElement('p');
+                captchaContainer.innerHTML = `
+                    [{include file='poca_widget.tpl' pcUserInputField="input[name='lgn_usr']" pcStyle="width: 260px; text-transform: none; font-weight: normal;"}]
+                `;
 
-            submitButton.parentNode.insertBefore(captchaContainer, submitButton);
+                loginBox.querySelector('.loginForm').style.width = 'auto';
+                emailField.required = true;
 
-        })();
-    [{/capture}]
+                submitButton.parentNode.insertBefore(captchaContainer, submitButton);
+            })();
+        [{/capture}]
 
-    [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
+        [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
 
-[{elseif $powerCaptcha->isThemeActive('flow')}]
+    [{elseif $powerCaptcha->isThemeActive('flow')}]
 
-    [{capture assign="loginBoxPowerCaptchaJS"}]
-        (function () {
-            const loginBox = document.querySelector("#loginBox");
-            if(!loginBox) {
-                return; //form not found
-            }
+        [{capture assign="loginBoxPowerCaptchaJS"}]
+            (function () {
+                const loginBox = document.querySelector("#loginBox");
+                if(!loginBox) {
+                    return; //form not found
+                }
 
-            const emailField = loginBox.querySelector("input[name='lgn_usr']");
-            const submitButton = loginBox.querySelector("button[type='submit']");
-            
-            const captchaContainer = document.createElement('div');
-            captchaContainer.innerHTML = `
-            [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']" 
-                pcStyle="width: 260px; text-transform: none; font-weight: normal;"}]
-                [{* TODO is pcStyle needed for flow theme? *}]
-            `;
-            
-            captchaContainer.classList.add('form-group');
-            emailField.required = true;
+                const emailField = loginBox.querySelector("input[name='lgn_usr']");
+                const submitButton = loginBox.querySelector("button[type='submit']");
+                
+                const captchaContainer = document.createElement('div');
+                captchaContainer.innerHTML = `
+                [{include file='poca_widget.tpl' pcUserInputField="input[name='lgn_usr']" 
+                    pcStyle="width: 260px; text-transform: none; font-weight: normal;"}]
+                    [{* TODO is pcStyle needed for flow theme? *}]
+                `;
+                
+                captchaContainer.classList.add('form-group');
+                emailField.required = true;
 
-            submitButton.parentNode.insertBefore(captchaContainer, submitButton);
+                submitButton.parentNode.insertBefore(captchaContainer, submitButton);
+            })();
+        [{/capture}]
 
-        })();
-    [{/capture}]
+        [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
 
-    [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
+    [{elseif $powerCaptcha->isThemeActive('wave')}]
 
-[{elseif $powerCaptcha->isThemeActive('wave')}]
+        [{capture assign="loginBoxPowerCaptchaJS"}]
+            (function () {
+                const loginBox = document.querySelector("#loginBox");
+                if(!loginBox) {
+                    return; //form not found
+                }
 
-    [{capture assign="loginBoxPowerCaptchaJS"}]
-        (function () {
-            const loginBox = document.querySelector("#loginBox");
-            if(!loginBox) {
-                return; //form not found
-            }
+                const emailField = loginBox.querySelector("input[name='lgn_usr']");
+                const submitButton = loginBox.querySelector("button[type='submit']");
+                
+                const captchaContainer = document.createElement('div');
+                captchaContainer.innerHTML = `
+                    [{include file='poca_widget.tpl' pcUserInputField="input[name='lgn_usr']"}]
+                `;
+                
+                captchaContainer.classList.add('form-group');
+                emailField.required = true;
 
-            const emailField = loginBox.querySelector("input[name='lgn_usr']");
-            const submitButton = loginBox.querySelector("button[type='submit']");
-            
-            const captchaContainer = document.createElement('div');
-            captchaContainer.innerHTML = `
-                [{include file='poca_widget.tpl' powerCaptchaSection='LOGIN' pcUserInputField="input[name='lgn_usr']"}]
-            `;
-            
-            captchaContainer.classList.add('form-group');
-            emailField.required = true;
+                submitButton.parentNode.insertBefore(captchaContainer, submitButton);
+            })();
+        [{/capture}]
 
-            submitButton.parentNode.insertBefore(captchaContainer, submitButton);
+        [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
 
-        })();
-    [{/capture}]
+    [{else}]
 
-    [{oxscript add=$loginBoxPowerCaptchaJS priority=10}]
+        [{include file='poca_widget.tpl' pcUserInputField="input[name='lgn_usr']"}]
 
-[{else}]
-    UNKOWN THEME: [{$oTheme->getActiveThemeId()}]
-[{/if}]
+    [{/if}]
 
 [{/if}]

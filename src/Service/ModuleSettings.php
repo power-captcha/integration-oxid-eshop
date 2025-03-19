@@ -27,6 +27,11 @@ class ModuleSettings implements ModuleSettingsInterface
         return !empty($this->getApiKey()) && !empty($this->getSecretKey());
     }
 
+    public function isDisplayCaptcha(string|null $section): bool
+    {
+        return $this->isConfigured() && $this->isProtectionEnabled($section);
+    }
+
     public function isProtectionEnabled(string|null $section): bool
     {
         switch($section) {
