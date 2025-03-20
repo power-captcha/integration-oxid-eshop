@@ -37,7 +37,10 @@ document.addEventListener('PowerCaptchaReady', (e) => {
     }
 
     if(pc.widgetContainer.classList.contains('pc-show-invalid')) {
-        pc.showInvalid(); // show invalid again after backend validation
+        // show invalid again after backend validation
+        pc.widget.setVisible(true); 
+        pc.showInvalid(); 
+        
         // scroll to invalid widget
         pc.widgetContainer.scrollIntoView({block: "center"});
     }
