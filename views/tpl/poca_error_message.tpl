@@ -1,5 +1,0 @@
-[{if $Errors.powerCaptchaErrors}]
-    [{block name="power_captcha_error_message"}]
-        [{oxmultilang ident="POWER_CAPTCHA_CONFIRM_SECURITY_CHECK_HINT"}]
-    [{/block}]
-[{/if}]
