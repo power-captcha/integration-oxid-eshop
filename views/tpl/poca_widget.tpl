@@ -13,6 +13,7 @@
     <div data-pc-api-key="[{$powerCaptcha->getApiKey()}]" 
         data-pc-client-uid="[{$powerCaptcha->getClientUid()}]"
         data-pc-endpoint="[{$powerCaptcha->getTokenRequestUrl()}]"
+        data-pc-lang="[{$oView->getActiveLangAbbr()}]"
         data-pc-check-mode="[{$powerCaptcha->getCheckMode()}]"
         [{if isset($pcUserInputField)}]
         data-pc-user-input-field="[{$pcUserInputField}]"
