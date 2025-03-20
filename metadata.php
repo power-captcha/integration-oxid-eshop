@@ -23,7 +23,7 @@ $aModule = [
         'en' => 'POWER CAPTCHA protects your OXID eShop against bots and unauthorized persons. GDPR compliant!',
         'de' => 'POWER CAPTCHA schützt deinen OXID eShop gegen Bots und unberechtigte Personen. DSGVO-konform!'
     ], 
-    'thumbnail'   => 'pictures/logo.png',
+    'thumbnail'   => 'logo.png',
     'version'     => '0.1.0',
     'author'      => 'POWER CAPTCHA',
     'url'         => 'https://power-captcha.com/en',
