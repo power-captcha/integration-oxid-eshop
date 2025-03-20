@@ -1,6 +1,0 @@
-{% extends "page/checkout/order.html.twig" %}
-{% block checkout_order_next_step_side %}
-    {% include '@power_captcha/templates/apex_widget.html.twig' 
-        with { powerCaptchaSection: 'CHECKOUT', pcUserInputField: '', pcFormElement: '#orderConfirmAgbBottom' } %}
-    {{ parent() }}
-{% endblock %}
