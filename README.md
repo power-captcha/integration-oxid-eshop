@@ -13,7 +13,7 @@ This OXID eShop Module integrates POWER CAPTCHA into:
 
 ## Compatibility
 
-Compatible with OXID eShop 7.1.x. Ready to use with the default APEX theme and easily integrable into other (custom) themes.
+Compatible with OXID eShop 6.5.x. Ready to use with the Wave, Flow and Azure themes, including any child themes based on them. Easily integrable into other custom themes.
 
 ## Installation and Configuration
 
@@ -51,7 +51,7 @@ Log in into your OXID eShop admin panel and navigate to **Extensions ⇨ Modules
 
 #### General settings
 
-Enter your **API Key** and **Secret Key**, both keys can be found in the [API Key Management](https://power-captcha.com/en/my-account/api-keys/) of POWER CAPTCHA. If don't have an API Key yet, you can choose a plan on [power-captcha.com](https://power-captcha.com/en/). 
+Enter your **API Key** and **Secret Key**, both keys can be found in the [customer area](https://power-captcha.com/en/my-account/api-keys/) of POWER CAPTCHA. If don't have an API Key yet, you can choose a plan on [power-captcha.com](https://power-captcha.com/en/). 
 
 Other general settings are optional.
 
@@ -95,21 +95,14 @@ These settings are only relevant if you are running a self-hosted POWER CAPTCHA 
 
 ### Useful commands
 
-* Reactivating the module
-
-  After making changes, it is sometimes necessary to reacitvate the module for the changes to take effect:
-  ```bash
-  cd <shopRoot>
-  vendor/bin/oe-console oe:module:deactivate power_captcha
-  vendor/bin/oe-console oe:module:activate power_captcha
-  ```
-
 * Reinstalling the module
 
   If you make changes to `services.yaml` (e.g. adding more services) or `metadata.php` (e.g. extending new OXID eShop components or adding new smarty blocks and templats), you may need to reinstall the module:
   ```bash
   cd <shopRoot>
+  vendor/bin/oe-console oe:module:deactivate power_captcha
   vendor/bin/oe-console oe:module:install-configuration source/modules/poca/power-captcha
+  vendor/bin/oe-console oe:module:activate power_captcha
   ```
 
 * Clearing the cache
