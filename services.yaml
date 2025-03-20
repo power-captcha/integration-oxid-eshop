@@ -1,20 +1,16 @@
 services:
-  # defaults does not exists in oxid 6.5 (?)
-  # _defaults:
-  #   public: false
-  #   autowire: true
+  _defaults:
+    public: false
+    autowire: true
 
   PowerCaptcha\OxidEshop\Core\Registry:
     class: OxidEsales\Eshop\Core\Registry
     public: true
-    autowire: true
 
   PowerCaptcha\OxidEshop\Service\ModuleSettingsInterface:
     class: PowerCaptcha\OxidEshop\Service\ModuleSettings
     public: true
-    autowire: true
 
   PowerCaptcha\OxidEshop\Service\TokenVerificationInterface:
     class: PowerCaptcha\OxidEshop\Service\TokenVerification
     public: true
-    autowire: true

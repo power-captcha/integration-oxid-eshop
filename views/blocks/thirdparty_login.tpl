@@ -46,9 +46,7 @@
                 
                 const captchaContainer = document.createElement('div');
                 captchaContainer.innerHTML = `
-                [{include file='poca_widget.tpl' pcUserInputField="input[name='lgn_usr']" 
-                    pcStyle="width: 260px; text-transform: none; font-weight: normal;"}]
-                    [{* TODO is pcStyle needed for flow theme? *}]
+                    [{include file='poca_widget.tpl' pcUserInputField="input[name='lgn_usr']"}]
                 `;
                 
                 captchaContainer.classList.add('form-group');

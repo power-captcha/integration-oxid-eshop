@@ -21,12 +21,9 @@
     [{elseif $powerCaptcha->isThemeActive('flow')}]
         
         [{$smarty.block.parent}]
-        [{* TODO : Noch mal testen, brauche ich hier ein form-group? in flow form/fieldset/user_noaccount.tpl gibt es bereits form-group *}]
-        <div class="form-group [{if $Errors.powerCaptchaErrors}]oxInValid[{/if}]">
-            <div class="col-lg-9 col-lg-offset-3">
-                [{include file='poca_widget.tpl' pcUserInputField="input[name='lgn_usr']"}]
-                <div class="help-block pc-invalid-message"></div>
-            </div>
+        <div class="col-lg-9 col-lg-offset-3">
+            [{include file='poca_widget.tpl' pcUserInputField="input[name='lgn_usr']"}]
+            <div class="help-block pc-invalid-message"></div>
         </div>
 
     [{elseif $powerCaptcha->isThemeActive('wave')}]

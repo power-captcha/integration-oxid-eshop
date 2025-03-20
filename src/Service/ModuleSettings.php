@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PowerCaptcha\OxidEshop\Service;
 
-// use OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModuleSettingServiceInterface; // does not exist in 6.5
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
 use PowerCaptcha\OxidEshop\Module;
 
@@ -138,32 +137,17 @@ class ModuleSettings implements ModuleSettingsInterface
 
     private function getSettingString(string $settingName, string $fallbackValue = ''): string
     {
-
-        // TODO try catch if the setting is not deinfed?!
        $settingValue = (string) $this->moduleSettingService->get($settingName, Module::MODULE_ID);
        if(!empty($settingValue)) {
             return $settingValue;
        }
 
        return $fallbackValue;
-        // if($this->moduleSettingService->exists($settingName, Module::MODULE_ID)) {
-        //     $settingValue = $this->moduleSettingService->getString($settingName, Module::MODULE_ID)->trim()->toString();
-        //     if(!empty($settingValue)) {
-        //         return $settingValue;
-        //     }
-        // }
-        // return $fallbackValue;
     }
 
     private function getSettingBool(string $settingName, bool $fallbackValue = false): bool
     {
-        // TODO try catch if the setting is not deinfed?!
-
         return (bool) $this->moduleSettingService->get($settingName, Module::MODULE_ID);
-        // if($this->moduleSettingService->exists($settingName, Module::MODULE_ID)) {
-        //     return $this->moduleSettingService->getBoolean($settingName, Module::MODULE_ID);
-        // }
-        // return $fallbackValue;
     }
 
 }
