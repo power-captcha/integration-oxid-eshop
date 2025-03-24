@@ -7,13 +7,13 @@ $aLang = [
 
     // General settings
     'SHOP_MODULE_GROUP_power_captcha_general'   => 'General settings',
-    
+
     'SHOP_MODULE_power_captcha_ApiKey'         => 'API Key <strong>(required)</strong>',
     'HELP_SHOP_MODULE_power_captcha_ApiKey'    => 'Enter your POWER CAPTCHA API Key. Find your API Key in the <a href="https://power-captcha.com/en/my-account/api-keys/" target="_blank">API Key Management</a>.',
-    
+
     'SHOP_MODULE_power_captcha_SecretKey'      => 'Secret Key <strong>(required)</strong>',
     'HELP_SHOP_MODULE_power_captcha_SecretKey' => 'Enter your POWER CAPTCHA Secret Key. Find your Secret Key in the <a href="https://power-captcha.com/en/my-account/api-keys/" target="_blank">API Key Management</a>.',
-    
+
     'SHOP_MODULE_power_captcha_CheckMode'       => 'Check mode (optional)',
     'HELP_SHOP_MODULE_power_captcha_CheckMode'  =>
         '<p>Configure the display of the widget and the behaviour of the security check.</p>
@@ -38,7 +38,7 @@ $aLang = [
     'SHOP_MODULE_power_captcha_CheckMode_auto'   => 'Automatic',
     'SHOP_MODULE_power_captcha_CheckMode_hidden' => 'Hidden',
     'SHOP_MODULE_power_captcha_CheckMode_manu'   => 'Manual',
-    
+
     'SHOP_MODULE_power_captcha_ApiErrorPolicy'   => 'API Error Policy (optional)',
     'HELP_SHOP_MODULE_power_captcha_ApiErrorPolicy'   => '
         <p>Configure the behaviour in the case of errors during token verification via the POWER CAPTCHA API (e.g. connection problems to the API or incorrect configuration).</p>
@@ -87,11 +87,11 @@ $aLang = [
 
     // On-premises settings
     'SHOP_MODULE_GROUP_power_captcha_onpremises'            => 'On-premise settings',
-    
+
     'SHOP_MODULE_power_captcha_EndpointBaseUrl'           => 'Endpoint base URL (optional)',
     'HELP_SHOP_MODULE_power_captcha_EndpointBaseUrl'      => 'Only needed if you have an on-premises version with self-hosted POWER CAPTCHA endpoint.',
-    
+
     'SHOP_MODULE_power_captcha_JavaScriptBaseUrl'         => 'JavaScript base URL (optional)',
     'HELP_SHOP_MODULE_power_captcha_JavaScriptBaseUrl'    => 'Only needed if you have an on-premises version with self-hosted POWER CAPTCHA JavaScript.',
-    
+
 ];

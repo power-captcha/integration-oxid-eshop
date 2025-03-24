@@ -1,4 +1,5 @@
 <?php
+
 namespace PowerCaptcha\OxidEshop\Controller;
 
 use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
@@ -9,12 +10,11 @@ use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
  */
 class PriceAlarmController extends PriceAlarmController_parent
 {
- 
     public function addme()
     {
         $tokenVerification = $this->getService(TokenVerificationInterface::class);
 
-        if(false === $tokenVerification->verifyToken('WISHEDPRICE', 'pa[email]')) {
+        if (false === $tokenVerification->verifyToken('WISHEDPRICE', 'pa[email]')) {
              // Token not verified
             return;
         }
@@ -22,5 +22,4 @@ class PriceAlarmController extends PriceAlarmController_parent
         // Token verified
         return parent::addme();
     }
-
 }
