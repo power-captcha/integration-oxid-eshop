@@ -1,4 +1,5 @@
 <?php
+
 namespace PowerCaptcha\OxidEshop\Core;
 
 use PowerCaptcha\OxidEshop\Service\ModuleSettingsInterface;

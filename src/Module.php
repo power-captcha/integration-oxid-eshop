@@ -17,7 +17,7 @@ final class Module
     public const DEFAULT_JAVASCRIPT_BASE_URL = 'https://cdn.power-captcha.com';
     public const DEFAULT_CHECK_MODE = self::CHECK_MODE_OPTION_AUTO;
     public const DEFAULT_API_ERROR_POLICY = self::API_ERROR_POLICY_GRANT_ACCESS;
-    
+
     // Check mode options
     public const CHECK_MODE_OPTION_AUTO = 'auto';
     public const CHECK_MODE_OPTION_MANU = 'manu';
@@ -64,5 +64,4 @@ final class Module
     public const SETTING_NAME_ENDPOINT_BASE_URL = 'power_captcha_EndpointBaseUrl';
 
     public const SETTING_NAME_JAVASCRIPT_BASE_URL = 'power_captcha_JavaScriptBaseUrl';
-
 }
