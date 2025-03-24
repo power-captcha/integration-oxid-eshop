@@ -13,13 +13,17 @@ This OXID eShop Module integrates POWER CAPTCHA into:
 
 ## Compatibility
 
-### Versions
-* Module 2.x version is compatible with OXID eShop 7.1.x
-* Module 1.x version is compatible with OXID eShop 6.5.x
+### Supported Versions
+Compatible with OXID eShop 7.1.x and 6.5.x.
 
-### Themes
-Ready to use with Wave, Flow, Azure (including child themes) in OXID 6.5 and APEX theme in OXID 7.1. 
-Easily integrable into other custom themes.
+- Version 2.x (branch: `oxid-7.1`) of our module is compatible with OXID eShop 7.1.x .
+- Version 1.x (branch: `oxid-6.5`) of our module is compatible with OXID eShop 6.5.x .
+
+### Supported Themes
+- Fully compatible with the following themes:
+  - OXID 6.5: Wave, Flow, Azure (including child themes)
+  - OXID 7.1: APEX theme
+- Easily integrable into other custom themes.
 
 ## Installation and Configuration
 
@@ -30,13 +34,13 @@ To install the module, use composer.
 For OXID 7.1:
   ```bash
   cd <shopRoot>
-  composer require power-captcha/integration-oxid-eshop:^2.0
+  composer require power-captcha/integration-oxid-eshop:^2.0.0
   ```
 
 For OXID 6.5:
   ```bash
   cd <shopRoot>
-  composer require power-captcha/integration-oxid-eshop:^1.0
+  composer require power-captcha/integration-oxid-eshop:^1.0.0
   ```
 
 ### 2. Activate the Module
