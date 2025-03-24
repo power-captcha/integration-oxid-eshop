@@ -13,16 +13,30 @@ This OXID eShop Module integrates POWER CAPTCHA into:
 
 ## Compatibility
 
-Compatible with OXID eShop 7.1.x. Ready to use with the default APEX theme and easily integrable into other (custom) themes.
+### Versions
+* Module 2.x version is compatible with OXID eShop 7.1.x
+* Module 1.x version is compatible with OXID eShop 6.5.x
+
+### Themes
+Ready to use with Wave, Flow, Azure (including child themes) in OXID 6.5 and APEX theme in OXID 7.1. 
+Easily integrable into other custom themes.
 
 ## Installation and Configuration
 
 ### 1. Install the Module
 
-To install the module, use composer:
-  ```
+To install the module, use composer. 
+
+For OXID 7.1:
+  ```bash
   cd <shopRoot>
-  composer require power-captcha/integration-oxid-eshop
+  composer require power-captcha/integration-oxid-eshop:^2.0
+  ```
+
+For OXID 6.5:
+  ```bash
+  cd <shopRoot>
+  composer require power-captcha/integration-oxid-eshop:^1.0
   ```
 
 ### 2. Activate the Module
@@ -51,7 +65,7 @@ Log in into your OXID eShop admin panel and navigate to **Extensions ⇨ Modules
 
 #### General settings
 
-Enter your **API Key** and **Secret Key**, both keys can be found in the [API Key Management](https://power-captcha.com/en/my-account/api-keys/) of POWER CAPTCHA. If don't have an API Key yet, you can choose a plan on [power-captcha.com](https://power-captcha.com/en/). 
+Enter your **API Key** and **Secret Key**, both keys can be found in the [customer area](https://power-captcha.com/en/my-account/api-keys/) of POWER CAPTCHA. If don't have an API Key yet, you can choose a plan on [power-captcha.com](https://power-captcha.com/en/). 
 
 Other general settings are optional.
 
@@ -70,14 +84,14 @@ These settings are only relevant if you are running a self-hosted POWER CAPTCHA 
 1. Clone the module to `<shopRoot>/dev/power-captcha/integration-oxid-eshop`:
     ```bash
     cd <shopRoot>
-    git clone https://github.com/power-captcha/integration-oxid-eshop dev/power-captcha/integration-oxid-eshop
+    git clone -b oxid-7.1 https://github.com/power-captcha/integration-oxid-eshop dev/power-captcha/integration-oxid-eshop
     ```
 
 2. Add and require the module from the local path via Composer:
     ```bash
     cd <shopRoot>
     composer config repositories.power-captcha/integration-oxid-eshop path ./dev/power-captcha/integration-oxid-eshop
-    composer require power-captcha/integration-oxid-eshop:*
+    composer require power-captcha/integration-oxid-eshop:@dev
     ```
 
 3. Install and activate the module using the OXID eShop console:
