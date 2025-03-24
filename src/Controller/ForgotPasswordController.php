@@ -1,4 +1,5 @@
 <?php
+
 namespace PowerCaptcha\OxidEshop\Controller;
 
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
@@ -10,13 +11,12 @@ use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
  */
 class ForgotPasswordController extends ForgotPasswordController_parent
 {
- 
     public function forgotPassword()
     {
         $container = ContainerFactory::getInstance()->getContainer();
         $tokenVerification = $container->get(TokenVerificationInterface::class);
 
-        if(false === $tokenVerification->verifyToken('FORGOTPWD', 'lgn_usr')) {
+        if (false === $tokenVerification->verifyToken('FORGOTPWD', 'lgn_usr')) {
              // Token not verified
              $this->_sForgotEmail = false;
              return;
@@ -25,5 +25,4 @@ class ForgotPasswordController extends ForgotPasswordController_parent
         // Token verified
         return parent::forgotPassword();
     }
-
 }

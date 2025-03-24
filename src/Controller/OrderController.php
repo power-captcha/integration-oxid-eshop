@@ -1,4 +1,5 @@
 <?php
+
 namespace PowerCaptcha\OxidEshop\Controller;
 
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
@@ -15,7 +16,7 @@ class OrderController extends OrderController_parent
         $container = ContainerFactory::getInstance()->getContainer();
         $tokenVerification = $container->get(TokenVerificationInterface::class);
 
-        if(false === $tokenVerification->verifyToken('CHECKOUT')) {
+        if (false === $tokenVerification->verifyToken('CHECKOUT')) {
              // Token not verified
             return;
         }

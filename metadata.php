@@ -4,7 +4,9 @@
  * Copyright © POWER CAPTCHA. All rights reserved.
  * See LICENSE file for license details.
  */
+
 use PowerCaptcha\OxidEshop\Module;
+
 /**
  * Metadata version
  */
@@ -22,7 +24,7 @@ $aModule = [
     'description' =>  [
         'en' => 'POWER CAPTCHA protects your OXID eShop against bots and unauthorized persons. GDPR compliant!',
         'de' => 'POWER CAPTCHA schützt deinen OXID eShop gegen Bots und unberechtigte Personen. DSGVO-konform!'
-    ], 
+    ],
     'thumbnail'   => 'logo.png',
     'version'     => '1.0.0',
     'author'      => 'POWER CAPTCHA',
@@ -138,15 +140,15 @@ $aModule = [
         [
             'group'       => Module::SETTING_GROUP_GENERAL,
             'name'        => Module::SETTING_NAME_SECRET_KEY,
-            'type'        => 'str', 
+            'type'        => 'str',
             'value'       => ''
         ],
         [
             'group'       => Module::SETTING_GROUP_GENERAL,
             'name'        => Module::SETTING_NAME_CHECK_MODE,
-            'type'        => 'select', 
+            'type'        => 'select',
             'value'       => Module::DEFAULT_CHECK_MODE,
-            'constraints' => 
+            'constraints' =>
                 Module::CHECK_MODE_OPTION_AUTO . '|' .
                 Module::CHECK_MODE_OPTION_HIDDEN . '|' .
                 Module::CHECK_MODE_OPTION_MANU
@@ -154,16 +156,16 @@ $aModule = [
         [
             'group'       => Module::SETTING_GROUP_GENERAL,
             'name'        => Module::SETTING_NAME_API_ERROR_POLICY,
-            'type'        => 'select', 
+            'type'        => 'select',
             'value'       => Module::DEFAULT_API_ERROR_POLICY,
-            'constraints' => 
+            'constraints' =>
                 Module::API_ERROR_POLICY_GRANT_ACCESS . '|' .
                 Module::API_ERROR_POLICY_BLOCK_ACCESS
         ],
         [
             'group'       => Module::SETTING_GROUP_GENERAL,
             'name'        => Module::SETTING_NAME_DEBUG_MODE,
-            'type'        => 'bool', 
+            'type'        => 'bool',
             'value'       => false
         ],
 
@@ -171,43 +173,43 @@ $aModule = [
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_LOGIN,
-            'type'        => 'bool', 
+            'type'        => 'bool',
             'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_REGISTER,
-            'type'        => 'bool', 
+            'type'        => 'bool',
             'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_CHECKOUT,
-            'type'        => 'bool', 
+            'type'        => 'bool',
             'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_CONTACT,
-            'type'        => 'bool', 
+            'type'        => 'bool',
             'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_FORGOTPWD,
-            'type'        => 'bool', 
+            'type'        => 'bool',
             'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_NEWSLETTER,
-            'type'        => 'bool', 
+            'type'        => 'bool',
             'value'       => false
         ],
         [
             'group'       => Module::SETTING_GROUP_PROTECTED_SECTIONS,
             'name'        => Module::SETTING_NAME_PROTECT_WISHEDPRICE,
-            'type'        => 'bool', 
+            'type'        => 'bool',
             'value'       => false
         ],
 
@@ -215,13 +217,13 @@ $aModule = [
         [
             'group'       => Module::SETTING_GROUP_ONPREMISES,
             'name'        => Module::SETTING_NAME_ENDPOINT_BASE_URL,
-            'type'        => 'str', 
+            'type'        => 'str',
             'value'       => ''
         ],
         [
             'group'       => Module::SETTING_GROUP_ONPREMISES,
             'name'        => Module::SETTING_NAME_JAVASCRIPT_BASE_URL,
-            'type'        => 'str', 
+            'type'        => 'str',
             'value'       => ''
         ],
     ],
