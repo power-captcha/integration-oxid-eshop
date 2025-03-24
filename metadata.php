@@ -42,7 +42,6 @@ $aModule = [
     ],
     'templates' => [
         'poca_widget.tpl'           => 'poca/power-captcha/views/tpl/poca_widget.tpl',
-        'poca_error_message.tpl'    => 'poca/power-captcha/views/tpl/poca_error_message.tpl',
     ],
     'blocks'      => [
         // REGISTER Section (Azure, Flow, Wave)
