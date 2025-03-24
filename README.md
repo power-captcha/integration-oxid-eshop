@@ -13,16 +13,30 @@ This OXID eShop Module integrates POWER CAPTCHA into:
 
 ## Compatibility
 
-Compatible with OXID eShop 6.5.x. Ready to use with the Wave, Flow and Azure themes, including any child themes based on them. Easily integrable into other custom themes.
+### Versions
+* Module 2.x version is compatible with OXID eShop 7.1.x
+* Module 1.x version is compatible with OXID eShop 6.5.x
+
+### Themes
+Ready to use with Wave, Flow, Azure (including child themes) in OXID 6.5 and APEX theme in OXID 7.1. 
+Easily integrable into other custom themes.
 
 ## Installation and Configuration
 
 ### 1. Install the Module
 
-To install the module, use composer:
-  ```
+To install the module, use composer. 
+
+For OXID 7.1:
+  ```bash
   cd <shopRoot>
-  composer require power-captcha/integration-oxid-eshop
+  composer require power-captcha/integration-oxid-eshop:^2.0
+  ```
+
+For OXID 6.5:
+  ```bash
+  cd <shopRoot>
+  composer require power-captcha/integration-oxid-eshop:^1.0
   ```
 
 ### 2. Activate the Module
@@ -70,14 +84,14 @@ These settings are only relevant if you are running a self-hosted POWER CAPTCHA 
 1. Clone the module to the modules directory in the OXID eShop `<shopRoot>/source/modules/poca/power-captcha`:
     ```bash
     cd <shopRoot>
-    git clone https://github.com/power-captcha/integration-oxid-eshop-65 source/modules/poca/power-captcha/
+    git clone -b oxid-6.5 https://github.com/power-captcha/integration-oxid-eshop source/modules/poca/power-captcha/
     ```
 
 2. Add and require the module from the local path via Composer:
     ```bash
     cd <shopRoot>
-    composer config repositories.power-captcha/integration-oxid-eshop-65 path ./source/modules/poca/power-captcha
-    composer require power-captcha/integration-oxid-eshop-65:@dev
+    composer config repositories.power-captcha/integration-oxid-eshop path ./source/modules/poca/power-captcha
+    composer require power-captcha/integration-oxid-eshop:@dev
     ```
     **Important**: In case you’ll be asked if you want to overwrite this module files, you need to select “No” for an answer, otherwise all files will be corrupted.
 
