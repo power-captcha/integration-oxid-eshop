@@ -1,4 +1,5 @@
 <?php
+
 namespace PowerCaptcha\OxidEshop\Controller;
 
 use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
@@ -9,12 +10,11 @@ use PowerCaptcha\OxidEshop\Service\TokenVerificationInterface;
  */
 class NewsletterController extends NewsletterController_parent
 {
- 
     public function send()
     {
         $tokenVerification = $this->getService(TokenVerificationInterface::class);
 
-        if(false === $tokenVerification->verifyToken('NEWSLETTER', 'editval[oxuser__oxusername]')) {
+        if (false === $tokenVerification->verifyToken('NEWSLETTER', 'editval[oxuser__oxusername]')) {
              // Token not verified
             return;
         }
@@ -22,5 +22,4 @@ class NewsletterController extends NewsletterController_parent
         // Token verified
         return parent::send();
     }
-
 }
